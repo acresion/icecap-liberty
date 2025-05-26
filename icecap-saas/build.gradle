@@ -4,10 +4,21 @@
  * This generated file contains a sample Java application project to get you started.
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.6/userguide/building_java_projects.html in the Gradle documentation.
  */
-
-plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    id 'application'
+// end::war[]
+// tag::liberty[]
+apply plugin: 'liberty'
+apply plugin: 'war'
+buildscript {
+    repositories {
+        // tag::buildmaven[]
+        mavenCentral()
+        // end::buildmaven[]
+    }
+    dependencies {
+        // tag::liberty-dependency[]
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.9.3'
+        // end::liberty-dependency[]
+    }
 }
 
 repositories {
@@ -18,11 +29,19 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
+    testImplementation libs.httpclient5
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
+    providedCompile 'org.eclipse.microprofile:microprofile:7.0'
+    
+    
+    
     // This dependency is used by the application.
     implementation libs.guava
+    
+    implementation(group:'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1')
+    implementation(group:'javax.annotation', name: 'javax.annotation-api', version: '1.2')
+    implementation(group:'javax.servlet', name: 'javax.servlet-api', version: '3.1.0')
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -32,10 +51,7 @@ java {
     }
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = 'org.example.App'
-}
+
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
