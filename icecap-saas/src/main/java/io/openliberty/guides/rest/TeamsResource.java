@@ -41,7 +41,7 @@ public class TeamsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     // end::produces[]
-    public Properties getProperties() {
+    public Properties getPropertiesTeam() {
     	logger.info("get properties");
         return System.getProperties();
     }
@@ -61,7 +61,7 @@ public class TeamsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     // end::produces[]
-    public Properties getProperties(@Parameter(required = true, description = "team identifier", name="team_id", in=ParameterIn.PATH) @PathParam("team_id") String teamId)
+    public Properties getTeamByID(@Parameter(required = true, description = "team identifier", name="team_id", in=ParameterIn.PATH) @PathParam("team_id") String teamId)
  {
     	logger.info("get team by ID");
         return System.getProperties();

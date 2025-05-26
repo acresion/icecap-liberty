@@ -24,6 +24,8 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.enums.ParameterIn;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 
+import com.icecap.dao.AthleteDao;
+
 import javax.ws.rs.PathParam;
 
 import javax.ws.rs.Consumes;
@@ -53,6 +55,7 @@ public class AthleteResource {
     // end::produces[]
     public Properties addAthlete() {
     	logger.info("add athlete");
+    	new AthleteDao().save(null);
         return System.getProperties();
     }
 
@@ -61,7 +64,8 @@ public class AthleteResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     // end::produces[]
-    public Properties getProperties(@Parameter(required = true, description = "athlete identifier", name="athlete_id", in=ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
+	//TODO change this to Athlete (make up ob
+    public Properties getAthleteByID(@Parameter(required = true, description = "athlete identifier", name="athlete_id", in=ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
  {
     	logger.info("get athlete by ID");
         return System.getProperties();
