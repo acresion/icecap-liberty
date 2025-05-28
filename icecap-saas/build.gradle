@@ -38,6 +38,8 @@ dependencies {
     
     // This dependency is used by the application.
     implementation libs.guava
+    implementation 'com.google.code.gson:gson:2.13.1'
+    implementation("org.json:json:20090211")
     implementation project(':icecap-api')
     implementation(group:'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1')
     implementation(group:'javax.annotation', name: 'javax.annotation-api', version: '1.2')
