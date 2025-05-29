@@ -11,68 +11,77 @@
 // end::copyright[]
 package io.openliberty.guides.hello.it;
 
-// tag::import[]
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
 
-import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.icecap.dto.Athlete;
 // end::import[]
 
 // tag::endpointit[]
-@Disabled
 public class EndpointIT {
-    private static String webURL;
+	private static String webURL;
 
-    @BeforeAll
-    // tag::init[]
-    public static void init() {
-        String port = System.getProperty("http.port");
-        String context = System.getProperty("context.root");
-        webURL = "http://localhost:" + port + "/" + context + "/" + "servlet";
-        System.out.println("URL: " + webURL);
-    }
-    // end::init[]
+	@BeforeAll
+	// tag::init[]
+	public static void init() {
+		String port = System.getProperty("http.port");
+		String context = System.getProperty("context.root");
+		webURL = "http://localhost:" + port + "/" + context + "/" + "v2/athletes";
+		System.out.println("URL: " + webURL);
+	}
 
-    // tag::test[]
-    @Test
-    // end::test[]
-    public void testServlet() throws Exception {
+	@SuppressWarnings("deprecation")
+	@Test
 
-        CloseableHttpClient client = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet(webURL);
-        CloseableHttpResponse response = null;
+	void testAPI() throws Exception {
+		
 
-        // tag::try[]
-        try {
-            response = client.execute(httpGet);
+		HttpClient client = HttpClient.newHttpClient();
+		// @formatter:off
+		Athlete athlete = Athlete.builder()
+				.withFirstName("Test")
+				.withLastName("Athlete")
+				.withNumber(1)
+				.withAge(2)
+				.withPos("55")
+				.withHeightFeet(5)
+				.withHeightInches(5)
+				.withWeightPounds(5)
+				.build();
+		
+		String athleteJson = """ 
+{"firstName":"Test","lastName":"Athlete","number":1,"age":2,"pos":"55","heightFeet":5,"heightInches":5,"weightPounds":5}""";
+		// @formatter:on
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:9080/icecap/v2/athletes"))
+				.POST(BodyPublishers.ofString(athleteJson)).setHeader("accept", "*/*")
+				.setHeader("Content-Type", "application/json").build();
 
-            int statusCode = response.getCode();
-            assertEquals(HttpStatus.SC_OK, statusCode, "HTTP GET failed");
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		assertEquals(204, response.statusCode());
+		HttpRequest request2 = HttpRequest.newBuilder().uri(URI.create("http://localhost:9080/icecap/v2/athletes/1"))
+				.GET().setHeader("accept", "application/json").build();
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                                        response.getEntity().getContent()));
-            String line;
-            StringBuffer buffer = new StringBuffer();
-            while ((line = reader.readLine()) != null) {
-                buffer.append(line);
-            }
-            reader.close();
-            assertTrue(buffer.toString().contains("Hello! Is Gradle working for you?"),
-                "Unexpected response body: " + buffer.toString());
-        } finally {
-            response.close();
-        }
-        // end::try[]
-    }
+		HttpResponse<String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
+		System.out.println(response.body());
+		assertEquals(athleteJson, response2.body());
+
+
+
+		// tag::try[]
+		try {
+
+		} finally {
+			System.out.println("All done");
+		}
+		// end::try[]
+	}
 }
 //end::endpointit[]
