@@ -22,6 +22,7 @@ import java.net.http.HttpResponse;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.google.gson.Gson;
 import com.icecap.dto.Athlete;
 // end::import[]
 
@@ -57,8 +58,9 @@ public class EndpointIT {
 				.withWeightPounds(5)
 				.build();
 		
-		String athleteJson = """ 
-{"firstName":"Test","lastName":"Athlete","number":1,"age":2,"pos":"55","heightFeet":5,"heightInches":5,"weightPounds":5}""";
+
+		Gson gson = new Gson();
+		String athleteJson = gson.toJson(athlete);
 		// @formatter:on
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:9080/icecap/v2/athletes"))
 				.POST(BodyPublishers.ofString(athleteJson)).setHeader("accept", "*/*")
@@ -70,7 +72,6 @@ public class EndpointIT {
 				.GET().setHeader("accept", "application/json").build();
 
 		HttpResponse<String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
-		System.out.println(response.body());
 		assertEquals(athleteJson, response2.body());
 
 
