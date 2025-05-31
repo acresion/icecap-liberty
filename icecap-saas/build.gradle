@@ -37,7 +37,7 @@ dependencies {
     providedCompile 'org.eclipse.microprofile:microprofile:7.0'
     
     
-    
+    implementation("mysql:mysql-connector-java:5.1.6")
     // This dependency is used by the application.
     implementation libs.guava
     implementation 'com.google.code.gson:gson:2.13.1'
