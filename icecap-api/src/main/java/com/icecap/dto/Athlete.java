@@ -1,10 +1,12 @@
 package com.icecap.dto;
 
 import java.util.Objects;
+import java.util.UUID;
 
 //TODO: add properties to here and add features where you get athlete from DAO, and return json
 //TODO: how to download liberty manually and restart project (readme)
 public class Athlete {
+	private UUID uuid;
 	private String firstName;
 	private String lastName;
 	private int number;
@@ -13,8 +15,8 @@ public class Athlete {
 	private int heightFeet;
 	private int heightInches;
 	private int weightPounds;
-
 	private Athlete(Builder builder) {
+		this.uuid = builder.uuid;
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
 		this.number = builder.number;
@@ -25,84 +27,91 @@ public class Athlete {
 		this.weightPounds = builder.weightPounds;
 	}
 
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public void setPos(String pos) {
-		this.pos = pos;
-	}
-
-	public void setHeightFeet(int heightFeet) {
-		this.heightFeet = heightFeet;
-	}
-
-	public void setHeightInches(int heightInches) {
-		this.heightInches = heightInches;
-	}
-
-	public void setWeightPounds(int weightPounds) {
-		this.weightPounds = weightPounds;
-	}
-
 	public Athlete() {
 		super();
 	}
+    
 
 
+
+
+
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
 
 	public String getFirstName() {
 		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public int getNumber() {
 		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	public int getAge() {
 		return age;
 	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public String getPos() {
 		return pos;
+	}
+
+	public void setPos(String pos) {
+		this.pos = pos;
 	}
 
 	public int getHeightFeet() {
 		return heightFeet;
 	}
 
+	public void setHeightFeet(int heightFeet) {
+		this.heightFeet = heightFeet;
+	}
+
 	public int getHeightInches() {
 		return heightInches;
+	}
+
+	public void setHeightInches(int heightInches) {
+		this.heightInches = heightInches;
 	}
 
 	public int getWeightPounds() {
 		return weightPounds;
 	}
-	
 
+	public void setWeightPounds(int weightPounds) {
+		this.weightPounds = weightPounds;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, firstName, heightFeet, heightInches, lastName, number, pos, weightPounds);
+		return Objects.hash(age, firstName, heightFeet, heightInches, lastName, number, pos, uuid, weightPounds);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -115,25 +124,22 @@ public class Athlete {
 		Athlete other = (Athlete) obj;
 		return age == other.age && Objects.equals(firstName, other.firstName) && heightFeet == other.heightFeet
 				&& heightInches == other.heightInches && Objects.equals(lastName, other.lastName)
-				&& number == other.number && Objects.equals(pos, other.pos) && weightPounds == other.weightPounds;
+				&& number == other.number && Objects.equals(pos, other.pos) && Objects.equals(uuid, other.uuid)
+				&& weightPounds == other.weightPounds;
 	}
-
-	
-	
 
 	@Override
 	public String toString() {
-		return "Athlete [firstName=" + firstName + ", lastName=" + lastName + ", number=" + number + ", age=" + age
-				+ ", pos=" + pos + ", heightFeet=" + heightFeet + ", heightInches=" + heightInches + ", weightPounds="
-				+ weightPounds + "]";
+		return "Athlete [uuid=" + uuid + ", firstName=" + firstName + ", lastName=" + lastName + ", number=" + number
+				+ ", age=" + age + ", pos=" + pos + ", heightFeet=" + heightFeet + ", heightInches=" + heightInches
+				+ ", weightPounds=" + weightPounds + "]";
 	}
-
 
 	public static Builder builder() {
 		return new Builder();
 	}
-
 	public static final class Builder {
+		private UUID uuid;
 		private String firstName;
 		private String lastName;
 		private int number;
@@ -146,7 +152,10 @@ public class Athlete {
 		private Builder() {
 		}
 
-
+		public Builder withUuid(UUID uuid) {
+			this.uuid = uuid;
+			return this;
+		}
 
 		public Builder withFirstName(String firstName) {
 			this.firstName = firstName;
@@ -192,5 +201,6 @@ public class Athlete {
 			return new Athlete(this);
 		}
 	}
+
 
 }

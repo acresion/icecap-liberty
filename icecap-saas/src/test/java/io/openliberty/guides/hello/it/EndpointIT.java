@@ -18,6 +18,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -41,13 +42,14 @@ public class EndpointIT {
 
 	@SuppressWarnings("deprecation")
 	@Test
-
 	void testAPI() throws Exception {
 		
 
 		HttpClient client = HttpClient.newHttpClient();
 		// @formatter:off
+		UUID athleteID = UUID.randomUUID();
 		Athlete athlete = Athlete.builder()
+				.withUuid(athleteID)
 				.withFirstName("Test")
 				.withLastName("Athlete")
 				.withNumber(1)
@@ -68,7 +70,8 @@ public class EndpointIT {
 
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 		assertEquals(204, response.statusCode());
-		HttpRequest request2 = HttpRequest.newBuilder().uri(URI.create("http://localhost:9080/icecap/v2/athletes/1"))
+		HttpRequest request2 = HttpRequest.newBuilder()
+				.uri(URI.create("http://localhost:9080/icecap/v2/athletes/" + athleteID.toString()))
 				.GET().setHeader("accept", "application/json").build();
 
 		HttpResponse<String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
