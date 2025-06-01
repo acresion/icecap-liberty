@@ -3,8 +3,12 @@ package com.icecap.dto;
 import java.util.Objects;
 import java.util.UUID;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 //TODO: add properties to here and add features where you get athlete from DAO, and return json
 //TODO: how to download liberty manually and restart project (readme)
+@JsonDeserialize(builder = Athlete.Builder.class)
 public class Athlete {
 	private UUID uuid;
 	private String firstName;
@@ -15,6 +19,7 @@ public class Athlete {
 	private int heightFeet;
 	private int heightInches;
 	private int weightPounds;
+
 	private Athlete(Builder builder) {
 		this.uuid = builder.uuid;
 		this.firstName = builder.firstName;
@@ -30,82 +35,41 @@ public class Athlete {
 	public Athlete() {
 		super();
 	}
-    
-
-
-
-
 
 	public UUID getUuid() {
 		return uuid;
-	}
-
-	public void setUuid(UUID uuid) {
-		this.uuid = uuid;
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	public String getLastName() {
 		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public int getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
 	public int getAge() {
 		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public String getPos() {
 		return pos;
 	}
 
-	public void setPos(String pos) {
-		this.pos = pos;
-	}
-
 	public int getHeightFeet() {
 		return heightFeet;
-	}
-
-	public void setHeightFeet(int heightFeet) {
-		this.heightFeet = heightFeet;
 	}
 
 	public int getHeightInches() {
 		return heightInches;
 	}
 
-	public void setHeightInches(int heightInches) {
-		this.heightInches = heightInches;
-	}
-
 	public int getWeightPounds() {
 		return weightPounds;
-	}
-
-	public void setWeightPounds(int weightPounds) {
-		this.weightPounds = weightPounds;
 	}
 
 	@Override
@@ -138,6 +102,8 @@ public class Athlete {
 	public static Builder builder() {
 		return new Builder();
 	}
+
+	@JsonPOJOBuilder(buildMethodName = "build", withPrefix = "with")
 	public static final class Builder {
 		private UUID uuid;
 		private String firstName;
@@ -201,6 +167,5 @@ public class Athlete {
 			return new Athlete(this);
 		}
 	}
-
 
 }
