@@ -8,6 +8,11 @@
 // tag::liberty[]
 apply plugin: 'liberty'
 apply plugin: 'war'
+sourceCompatibility = 17
+targetCompatibility = 17
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 buildscript {
     repositories {
         // tag::buildmaven[]
@@ -34,6 +39,7 @@ dependencies {
 	testImplementation("org.mockito:mockito-core:2.1.0")
 	
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
     providedCompile 'org.eclipse.microprofile:microprofile:7.0'
     
     
@@ -49,6 +55,24 @@ dependencies {
     
 }
 
+ext  {
+    liberty.server.var.'http.port' = '9080'
+    liberty.server.var.'https.port' = '9443'
+    liberty.server.var.'app.context.root' = '/icecap'
+    openapi_port = 9080
+    openapi_context_root = 'openapi/ui'
+}
+
+task openBrowser {
+    description = 'Open browser to OPENAPI'
+    doLast {
+        String port =  openapi_port
+        String context = openapi_context_root
+        String URL = "http://localhost:" + port + "/" + context 
+        java.awt.Desktop.desktop.browse URL.toURI()
+        java.awt.Desktop.desktop.browse file("$buildDir/reports/tests/test/index.html").toURI()
+    }
+}
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
@@ -61,4 +85,17 @@ java {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    
+    testLogging {
+        events 'passed', 'skipped', 'failed', 'standardOut'
+        exceptionFormat 'full'
+    }
+    systemProperty 'http.port', liberty.server.var.'http.port'
+    // end::httpport[]
+    // tag::contextroot[]
+    systemProperty 'context.root',  liberty.server.var.'app.context.root'
 }
+
+test.dependsOn 'libertyStart'
+test.finalizedBy(openBrowser)
+clean.dependsOn 'libertyStop'
