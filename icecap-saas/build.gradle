@@ -30,20 +30,19 @@ dependencies {
     // Use JUnit Jupiter for testing.
     implementation project(':icecap-api')
     
-    implementation("mysql:mysql-connector-java:5.1.6")
+    implementation libs.mysql
     implementation libs.guava
-    implementation 'com.google.code.gson:gson:2.13.1'
-    implementation("org.json:json:20090211")
+    implementation libs.gson
+    implementation libs.json
+    implementation libs.javax.ws.rs
+    implementation libs.javax.annotation
+    implementation libs.javax.servlet
     
-    implementation(group:'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1')
-    implementation(group:'javax.annotation', name: 'javax.annotation-api', version: '1.2')
-    implementation(group:'javax.servlet', name: 'javax.servlet-api', version: '3.1.0')
-    
-    providedCompile 'org.eclipse.microprofile:microprofile:7.0'
+    providedCompile libs.microprofile
     
     testImplementation libs.junit.jupiter
     testImplementation libs.httpclient5
-	testImplementation("org.mockito:mockito-core:2.1.0")
+	testImplementation libs.mockito
 	
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'   
 }
