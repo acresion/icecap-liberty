@@ -74,6 +74,9 @@ By default, Liberty is shipped with a config that requires a remote debugger to 
 
 ```properties
 WLP_DEBUG_SUSPEND=n
+WLP_LOGGING_MESSAGE_FORMAT=json
+WLP_LOGGING_MESSAGE_SOURCE=message,trace,accessLog,ffdc,audit
+WLP_LOGGING_CONSOLE_LOGLEVEL=info
 ```
 
 
