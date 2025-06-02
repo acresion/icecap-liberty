@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *******************************************************************************/
 // end::copyright[]
-package io.openliberty.guides.hello.it;
+package com.icecap.resources.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

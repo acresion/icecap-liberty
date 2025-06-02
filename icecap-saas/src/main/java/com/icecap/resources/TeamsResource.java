@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *******************************************************************************/
 // end::copyright[]
-package io.openliberty.guides.rest;
+package com.icecap.resources;
 
 import java.lang.invoke.MethodHandles;
 import java.util.Properties;
