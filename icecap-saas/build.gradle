@@ -44,6 +44,8 @@ dependencies {
     testImplementation libs.httpclient5
 	testImplementation libs.mockito
 	
+	
+	
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'   
 }
 
@@ -86,6 +88,6 @@ tasks.named('test') {
     systemProperty 'context.root',  liberty.server.var.'app.context.root'
 }
 
-test.dependsOn 'libertyStart'
-test.finalizedBy(openBrowser)
+test.dependsOn 'libertyStart' 
+// test.finalizedBy(openBrowser)
 clean.dependsOn 'libertyStop'
