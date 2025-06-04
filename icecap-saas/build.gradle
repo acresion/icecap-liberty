@@ -8,6 +8,18 @@ targetCompatibility = 17
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+sourceSets {
+     integrationTest {
+         java{
+         	srcDirs = ["src/integrationTest/java"]
+         }
+         resources{
+         
+         	srcDirs = ["src/integrationTest/resources"]
+         }
+     }
+ }
 buildscript {
     repositories {
         // tag::buildmaven[]
@@ -43,6 +55,8 @@ dependencies {
     testImplementation libs.junit.jupiter
     testImplementation libs.httpclient5
 	testImplementation libs.mockito
+	integrationTestImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    integrationTestRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 	
 	
 	
@@ -53,9 +67,32 @@ ext  {
     liberty.server.var.'http.port' = '9080'
     liberty.server.var.'https.port' = '9443'
     liberty.server.var.'app.context.root' = '/icecap'
+    
+    
+    liberty.server.var.'WLP_LOGGING_MESSAGE_FORMAT'='json'
+    liberty.server.var.'WLP_LOGGING_MESSAGE_SOURCE'='message,trace,accessLog,ffdc,audit'
+
+
+    liberty.server.var.'mysql_dbname' = 'icecap'
+    liberty.server.var.'mysql_host' = 'localhost'
+    liberty.server.var.'mysql_port' = '3306'
+    liberty.server.var.'mysql_user' = project.findProperty('mysql_user')
+    
+    //liberty.server.var.'mysql_user' = 'root'
+    // don't push with this existing:
+    
     openapi_port = 9080
     openapi_context_root = 'openapi/ui'
+    
+
 }
+
+task integrationTest(type: Test) {
+         description = 'Runs integration tests'
+         group = 'verification'
+         testClassesDirs = sourceSets.integrationTest.output.classesDirs
+         classpath = sourceSets.integrationTest.runtimeClasspath
+     }
 
 task openBrowser {
     description = 'Open browser to OPENAPI'
@@ -67,6 +104,8 @@ task openBrowser {
         java.awt.Desktop.desktop.browse file("$buildDir/reports/tests/test/index.html").toURI()
     }
 }
+
+
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
@@ -74,6 +113,23 @@ java {
     }
 }
 
+liberty {
+    server {
+        env = [    
+              'mysql_dbname' : 'icecap' ,
+              'mysql_host'   : 'localhost', 
+              'mysql_port'   : '3306',
+              'WLP_LOGGING_CONSOLE_LOGLEVEL' :    'info',
+              'WLP_LOGGING_MESSAGE_SOURCE'  :   'message,trace,accessLog,ffdc,audit',
+              'WLP_LOGGING_MESSAGE_FORMAT' : 'json',
+              'mysql_user' : project.findProperty('mysql_user'),
+              'mysql_password' : project.findProperty('mysql_password')
+
+         
+         ]
+        //jvmOptions = ['-Xms128m', '-Xmx512m']
+    }
+}
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
@@ -86,8 +142,11 @@ tasks.named('test') {
     // end::httpport[]
     // tag::contextroot[]
     systemProperty 'context.root',  liberty.server.var.'app.context.root'
+    
+    
 }
 
 test.dependsOn 'libertyStart' 
 // test.finalizedBy(openBrowser)
+check.dependsOn integrationTest
 clean.dependsOn 'libertyStop'

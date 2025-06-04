@@ -1,8 +1,10 @@
 package com.icecap.dao;
 
+import java.lang.invoke.MethodHandles;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import com.icecap.config.MySqlConfig;
 
@@ -21,13 +23,22 @@ public class ConnectionToSQL {
 		this.config = config;
 	}
 
+	private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
+
 	public Connection connect() throws SQLException {
 
 		try {
+			logger.info("Before succ");
 			Class.forName("com.mysql.jdbc.Driver");
+			logger.info("After succ: " + config);
+			// This doesn't
 			return DriverManager.getConnection(
-					"jdbc:mysql://" + config.getUser() + ":" + config.getPort() + "/" + config.getDbName(),
-					config.getHost(), config.getPassword());
+					"jdbc:mysql://" + config.getHost() + ":" + config.getPort() + "/" + config.getDbName(),
+					config.getUser(), config.getPassword());
+
+			// temp code
+
+
 		} catch (ClassNotFoundException e) {
 			// the driver is shipped with the application
 			throw new IllegalStateException(e);

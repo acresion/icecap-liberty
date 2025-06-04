@@ -35,12 +35,13 @@ import com.icecap.resources.TeamsResource;
 public class IcecapApplication extends Application {
 	private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
-	//private final IceCapConfig config;
+	private final IceCapConfig config;
 
+	// dont link integration tests to check
 	public IcecapApplication() {
 		super();
 		logger.info("icecap app init");
-		//this.config = new IceCapConfig(System.getenv());
+		this.config = new IceCapConfig(System.getenv());
 	}
 
 	@Override
@@ -53,7 +54,7 @@ public class IcecapApplication extends Application {
 	}
 
 	public IceCapConfig getConfig() {
-		return null;
+		return config;
 	}
 
 }

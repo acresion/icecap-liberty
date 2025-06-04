@@ -1,6 +1,8 @@
 package com.icecap.config;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class MySqlConfig {
 	private final String dbName;
@@ -8,6 +10,7 @@ public class MySqlConfig {
 	private final int port;
 	private final String user;
 	private final String password;
+	private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
 	public MySqlConfig(Map<String, String> env) {
 		dbName = env.get("mysql_dbname");
@@ -36,6 +39,12 @@ public class MySqlConfig {
 
 	public String getPassword() {
 		return password;
+	}
+
+	@Override
+	public String toString() {
+		return "MySqlConfig [dbName=" + dbName + ", host=" + host + ", port=" + port + ", user=" + user + ", password="
+				+ password + "]";
 	}
 
 }

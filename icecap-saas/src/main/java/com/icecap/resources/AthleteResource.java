@@ -12,6 +12,9 @@
 package com.icecap.resources;
 
 import java.lang.invoke.MethodHandles;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -30,6 +33,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import com.icecap.app.IcecapApplication;
 import com.icecap.config.IceCapConfig;
 import com.icecap.dao.AthleteDao;
+import com.icecap.dao.ConnectionToSQL;
 import com.icecap.dto.Athlete;
 // tag::path[]
 @Path("/v2/athletes")
@@ -38,9 +42,11 @@ public class AthleteResource {
 
 
 	private final IceCapConfig config;
+	private final ConnectionToSQL con;
 
 	public AthleteResource(@Context IcecapApplication app) {
 		this.config = app.getConfig();
+		this.con = new ConnectionToSQL(this.config.getMySqlConfig());
 	}
 
 
@@ -55,8 +61,18 @@ public class AthleteResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	// end::produces[]
 	public Properties getPropertiesAthlete() {
-		logger.info(config.getMySqlConfig().getDbName());
+		logger.info(config.getMySqlConfig().toString());
 		return System.getProperties();
+	}
+
+	@GET
+	@Path("/getEnv")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	// end::produces[]
+	public Map<String, String> getEnvironmentAthlete() {
+		logger.info(config.getMySqlConfig().toString());
+		return System.getenv();
 	}
 
 	@POST
@@ -64,8 +80,14 @@ public class AthleteResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	// end::produces[]
-	public void addAthlete(Athlete athlete) {
-		athleteDao.addAthlete(athlete);
+	public void addAthlete(Athlete athlete) throws SQLException {
+		logger.info("moment before disaster");
+		try (Connection connect = con.connect()) {
+			logger.info("connection to server done");
+			athleteDao.addAthlete(athlete, connect);
+		}
+
+
 	}
 
 	@GET
@@ -75,10 +97,13 @@ public class AthleteResource {
 	// end::produces[]
 	// TODO change this to Athlete (make up ob
 	public Athlete getAthleteByID(
-			@Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId) {
-		logger.info("get athlete by ID");
-		Athlete athlete = athleteDao.getAthlete(athleteId);
-		return athlete;
+			@Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
+			throws SQLException {
+		try (Connection connect = con.connect()) {
+			logger.info("get athlete by ID");
+			Athlete athlete = athleteDao.getAthlete(athleteId, connect);
+			return athlete;
+		}
 
 	}
 

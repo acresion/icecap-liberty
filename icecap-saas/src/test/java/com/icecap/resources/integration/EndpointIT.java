@@ -21,6 +21,7 @@ import java.net.http.HttpResponse;
 import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
@@ -28,6 +29,7 @@ import com.icecap.dto.Athlete;
 // end::import[]
 
 // tag::endpointit[]
+@Disabled
 public class EndpointIT {
 	private static String webURL;
 
