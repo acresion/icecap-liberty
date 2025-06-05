@@ -106,8 +106,8 @@ liberty {
               'WLP_LOGGING_CONSOLE_LOGLEVEL' :    'info',
               'WLP_LOGGING_MESSAGE_SOURCE'  :   'message,trace,accessLog,ffdc,audit',
               'WLP_LOGGING_MESSAGE_FORMAT' : 'json',
-              'mysql_user' : project.findProperty('mysql_user'),
-              'mysql_password' : project.findProperty('mysql_password')
+              'mysql_user' : (project.findProperty('mysql_user')==null ? "" : project.findProperty('mysql_user')),
+              'mysql_password' : (project.findProperty('mysql_password')==null ? "" : project.findProperty('mysql_password'))
          
          ]
         //jvmOptions = ['-Xms128m', '-Xmx512m']
