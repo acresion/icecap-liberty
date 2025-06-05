@@ -9,42 +9,41 @@ import java.util.logging.Logger;
 import com.icecap.config.MySqlConfig;
 
 public class ConnectionToSQL {
-	/**
-	 * 
-	 * @return The return of this method generates a successful connection to the
-	 *         database. This is subject to change.
-	 * @throws SQLException This gets thrown when there is a problem when the user
-	 *                      tries to connect to the database
-	 */
-	private final MySqlConfig config;
+  /**
+   * 
+   * @return The return of this method generates a successful connection to the
+   *         database. This is subject to change.
+   * @throws SQLException This gets thrown when there is a problem when the user
+   *                      tries to connect to the database
+   */
+  private final MySqlConfig config;
 
-	public ConnectionToSQL(MySqlConfig config) {
-		super();
-		this.config = config;
-	}
+  public ConnectionToSQL(MySqlConfig config) {
+    super();
+    this.config = config;
+  }
 
-	private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
+  private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
-	public Connection connect() throws SQLException {
+  public Connection connect() throws SQLException {
 
-		try {
-			logger.info("Before succ");
-			Class.forName("com.mysql.jdbc.Driver");
-			logger.info("After succ: " + config);
-			// This doesn't
-			return DriverManager.getConnection(
-					"jdbc:mysql://" + config.getHost() + ":" + config.getPort() + "/" + config.getDbName(),
-					config.getUser(), config.getPassword());
+    try {
+      logger.info("Before succ");
+      Class.forName("com.mysql.jdbc.Driver");
+      logger.info("After succ: " + config);
+      // This doesn't
+      return DriverManager.getConnection(
+          "jdbc:mysql://" + config.getHost() + ":" + config.getPort() + "/" + config.getDbName(), config.getUser(),
+          config.getPassword());
 
-			// temp code
+      // temp code
 
-
-		} catch (ClassNotFoundException e) {
-			// the driver is shipped with the application
-			throw new IllegalStateException(e);
-		}
-		// This is the source of all of the errors.
-	}
+    } catch (ClassNotFoundException e) {
+      // the driver is shipped with the application
+      throw new IllegalStateException(e);
+    }
+    // This is the source of all of the errors.
+  }
 }
 
 // TODO: Find a way to connect the liberty project to the MySQL database using the config classes

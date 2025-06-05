@@ -1,0 +1,6 @@
+# copy the file as a gradle.properties file.
+# fill in the database credentials
+# You must have a MySQL database running locally at localhost port 3306 database name icecap
+
+mysql_user=
+mysql_password=

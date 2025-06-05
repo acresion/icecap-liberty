@@ -55,10 +55,9 @@ dependencies {
     testImplementation libs.junit.jupiter
     testImplementation libs.httpclient5
 	testImplementation libs.mockito
-	integrationTestImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    integrationTestRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-	
-	
+	integrationTestImplementation  libs.junit.jupiter
+	//integrationTestImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    //integrationTestRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 	
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'   
 }
@@ -68,23 +67,8 @@ ext  {
     liberty.server.var.'https.port' = '9443'
     liberty.server.var.'app.context.root' = '/icecap'
     
-    
-    liberty.server.var.'WLP_LOGGING_MESSAGE_FORMAT'='json'
-    liberty.server.var.'WLP_LOGGING_MESSAGE_SOURCE'='message,trace,accessLog,ffdc,audit'
-
-
-    liberty.server.var.'mysql_dbname' = 'icecap'
-    liberty.server.var.'mysql_host' = 'localhost'
-    liberty.server.var.'mysql_port' = '3306'
-    liberty.server.var.'mysql_user' = project.findProperty('mysql_user')
-    
-    //liberty.server.var.'mysql_user' = 'root'
-    // don't push with this existing:
-    
     openapi_port = 9080
     openapi_context_root = 'openapi/ui'
-    
-
 }
 
 task integrationTest(type: Test) {
@@ -112,7 +96,7 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
+//https://github.com/OpenLiberty/ci.gradle/blob/main/docs/libertyExtensions.md
 liberty {
     server {
         env = [    
@@ -124,7 +108,6 @@ liberty {
               'WLP_LOGGING_MESSAGE_FORMAT' : 'json',
               'mysql_user' : project.findProperty('mysql_user'),
               'mysql_password' : project.findProperty('mysql_password')
-
          
          ]
         //jvmOptions = ['-Xms128m', '-Xmx512m']

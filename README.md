@@ -79,7 +79,6 @@ WLP_LOGGING_MESSAGE_SOURCE=message,trace,accessLog,ffdc,audit
 WLP_LOGGING_CONSOLE_LOGLEVEL=info
 ```
 
-
 ### JAVA
 
 - Navigate to [download](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
@@ -101,7 +100,7 @@ The solution uses Gradle to build the application. It includes a Gradle wrapper 
 - If the Liberty server is currently running, stop it using `Control + C`
 - Start it using `./server debug [server_name]`
 
+###GRADLE.PROPERTIES:
 
-
-
-
+- Find the file called gradle.properties.template
+- Follow the instructions provided on the file

@@ -13,3 +13,4 @@ bin
 #eclipse generazted
 .project
 .classpath
+gradle.properties
