@@ -18,7 +18,8 @@ create table league(
 , contracts_limit int
 , retained_limit int
 , primary key(league_id));
--- defines data for team
+-- defines the table for each of the 32 teams in the NHL
+
 create table team(
    team_id char (36) 
  , in_league_id char(36)
@@ -37,7 +38,8 @@ create table team(
  , website varchar(255)
  , primary key(team_id)
  , foreign key(in_league_id) references league(league_id));
--- defines data for
+
+-- defines general info about an athlete in a specific league
 create table athlete(
    athlete_id varchar(255)
  , current_team_id char(36)
@@ -57,7 +59,7 @@ create table athlete(
  , foreign key(current_team_id) references team(team_id));
 
 
-
+-- defines info about a contract signed by an athlete
 create table contract_info(
   contract_id  char(36) primary key
 , player_id char(36)
@@ -72,7 +74,7 @@ create table contract_info(
 , foreign key(player_id) references athlete(athlete_id)
 , foreign key(team) references team(team_id));
 
-
+-- defines specific stats for a skater (this remains strictly for hockey databases)
 create table skater_stats(
   unique_season_id char(36) primary key
 , skater_id char(36)
@@ -92,6 +94,7 @@ create table skater_stats(
 , foreign key(skater_id) references athlete(athlete_id)
 , foreign key(team_id) references team(team_id));
 
+-- defines specific stats for a goalie
 create table goalie_stats(
   unique_season_id char(36) primary key
 , goalie_id char(36)
