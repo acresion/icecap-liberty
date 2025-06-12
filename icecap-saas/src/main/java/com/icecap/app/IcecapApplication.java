@@ -26,6 +26,7 @@ import org.eclipse.microprofile.openapi.annotations.info.Info;
 
 import com.icecap.config.IceCapConfig;
 import com.icecap.resources.AthleteResource;
+import com.icecap.resources.LeagueResource;
 import com.icecap.resources.TeamsResource;
 
 
@@ -50,6 +51,7 @@ public class IcecapApplication extends Application {
 		logger.info("icecap get classes");
 		classes.add(TeamsResource.class);
 		classes.add(AthleteResource.class);
+    classes.add(LeagueResource.class);
 		return classes;
 	}
 

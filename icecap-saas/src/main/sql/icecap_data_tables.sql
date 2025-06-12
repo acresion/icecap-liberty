@@ -6,6 +6,8 @@ drop table if exists league;
 drop table if exists skater_stats;
 drop table if exists goalie_stats;
 -- defines the table for a league
+
+-- change date of birth to date data type
 create table league(
   league_id char(36)
 , name varchar(20)
@@ -43,11 +45,12 @@ create table team(
 create table athlete(
    athlete_id varchar(255)
  , current_team_id char(36)
+ , status varchar(10)
  , firstName varchar(255)
  , lastName varchar(20)
  , jNumber int
  , age int
- , pos varchar(20)
+ , position varchar(20)
  , heightFeet int
  , heightInches int
  , weightPounds int

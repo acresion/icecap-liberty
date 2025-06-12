@@ -14,6 +14,7 @@ package com.icecap.resources;
 import java.lang.invoke.MethodHandles;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -89,6 +90,20 @@ public class AthleteResource {
 
 
 	}
+
+  @POST
+  @Path("/athleteList")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  // end::produces[]
+  public void addAthleteList(List<Athlete> athlete) throws SQLException {
+    logger.info("moment before disaster");
+    try (Connection connect = con.connect()) {
+      logger.info("connection to server done");
+
+    }
+
+  }
 
 	@GET
 	@Path("/{athlete_id}")
