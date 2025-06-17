@@ -32,9 +32,11 @@ public class ConnectionToSQL {
       Class.forName("com.mysql.jdbc.Driver");
       logger.info("After succ: " + config);
       // This doesn't
-      return DriverManager.getConnection(
+      Connection connection = DriverManager.getConnection(
           "jdbc:mysql://" + config.getHost() + ":" + config.getPort() + "/" + config.getDbName(), config.getUser(),
           config.getPassword());
+      connection.setAutoCommit(false);
+      return connection;
 
       // temp code
 

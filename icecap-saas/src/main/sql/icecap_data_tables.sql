@@ -16,7 +16,7 @@ create table league(
 , commissioner varchar(50)
 , teams int
 , roster_limit int
-, salary_cap decimal
+, salary_cap decimal(12,2)
 , contracts_limit int
 , retained_limit int
 , primary key(league_id));
@@ -32,8 +32,8 @@ create table team(
  , gmName varchar(20)
  , coachName varchar(20)
  , captain varchar(255)
- , capHit decimal
- , capSpace decimal
+ , capHit decimal(12,2)
+ , capSpace decimal(12,2)
  , active int
  , retained int
  , owner varchar(50)
@@ -70,8 +70,8 @@ create table contract_info(
 , agent varchar(20)
 , team char(36)
 , term int
-, value decimal
-, capHit decimal
+, value decimal(12,2)
+, capHit decimal(12,2)
 , percent_at_start decimal
 , status varchar(255)
 , foreign key(player_id) references athlete(athlete_id)
@@ -111,8 +111,8 @@ create table goalie_stats(
 , shotsAgainst int
 , saves int
 , goalsAgainst int
-, gaa decimal
-, savePercent decimal
+, gaa decimal(12,2)
+, savePercent decimal(12,2)
 , shutouts int
 , foreign key(goalie_id) references athlete(athlete_id)
 , foreign key(team_id) references team(team_id));

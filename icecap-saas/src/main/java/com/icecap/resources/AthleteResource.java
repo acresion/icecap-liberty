@@ -75,6 +75,7 @@ public class AthleteResource {
 		logger.info(config.getMySqlConfig().toString());
 		return System.getenv();
 	}
+  // TODO: add controller(after updating rest API)
 
 	@POST
 	@Path("/")
@@ -90,6 +91,8 @@ public class AthleteResource {
 
 
 	}
+
+
 
   @POST
   @Path("/athleteList")
@@ -110,7 +113,6 @@ public class AthleteResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	// end::produces[]
-	// TODO change this to Athlete (make up ob
 	public Athlete getAthleteByID(
 			@Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
 			throws SQLException {
