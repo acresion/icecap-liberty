@@ -1,5 +1,6 @@
 package com.icecap.dto;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,26 +12,13 @@ public class League {
   private String commissioner;
   private int teams;
   private int roster_limit;
-  private double salary_cap;
+  private BigDecimal salary_cap;
   private int contract_limit;
   private int retained_limit;
-
-  private League(Builder builder) {
-    this.uuid = builder.uuid;
-    this.name = builder.name;
-    this.sport = builder.sport;
-    this.founded = builder.founded;
-    this.commissioner = builder.commissioner;
-    this.teams = builder.teams;
-    this.roster_limit = builder.roster_limit;
-    this.salary_cap = builder.salary_cap;
-    this.contract_limit = builder.contract_limit;
-    this.retained_limit = builder.retained_limit;
-  }
-
+  
+  
   public League() {
-
-  }
+  };
 
   public UUID getUuid() {
     return uuid;
@@ -60,7 +48,7 @@ public class League {
     return roster_limit;
   }
 
-  public double getSalary_cap() {
+  public BigDecimal getSalary_cap() {
     return salary_cap;
   }
 
@@ -70,10 +58,6 @@ public class League {
 
   public int getRetained_limit() {
     return retained_limit;
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   @Override
@@ -93,8 +77,7 @@ public class League {
     League other = (League) obj;
     return Objects.equals(commissioner, other.commissioner) && contract_limit == other.contract_limit
         && founded == other.founded && Objects.equals(name, other.name) && retained_limit == other.retained_limit
-        && roster_limit == other.roster_limit
-        && Double.doubleToLongBits(salary_cap) == Double.doubleToLongBits(other.salary_cap)
+        && roster_limit == other.roster_limit && Objects.equals(salary_cap, other.salary_cap)
         && Objects.equals(sport, other.sport) && teams == other.teams && Objects.equals(uuid, other.uuid);
   }
 
@@ -105,6 +88,21 @@ public class League {
         + ", contract_limit=" + contract_limit + ", retained_limit=" + retained_limit + "]";
   }
 
+  private League(Builder builder) {
+    this.uuid = builder.uuid;
+    this.name = builder.name;
+    this.sport = builder.sport;
+    this.founded = builder.founded;
+    this.commissioner = builder.commissioner;
+    this.teams = builder.teams;
+    this.roster_limit = builder.roster_limit;
+    this.salary_cap = builder.salary_cap;
+    this.contract_limit = builder.contract_limit;
+    this.retained_limit = builder.retained_limit;
+  }
+  public static Builder builder() {
+    return new Builder();
+  }
   public static final class Builder {
     private UUID uuid;
     private String name;
@@ -113,7 +111,7 @@ public class League {
     private String commissioner;
     private int teams;
     private int roster_limit;
-    private double salary_cap;
+    private BigDecimal salary_cap;
     private int contract_limit;
     private int retained_limit;
 
@@ -155,7 +153,7 @@ public class League {
       return this;
     }
 
-    public Builder withSalary_cap(double salary_cap) {
+    public Builder withSalary_cap(BigDecimal salary_cap) {
       this.salary_cap = salary_cap;
       return this;
     }
@@ -174,5 +172,6 @@ public class League {
       return new League(this);
     }
   }
+
 
 }
