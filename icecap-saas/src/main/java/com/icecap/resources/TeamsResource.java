@@ -15,22 +15,16 @@ import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.eclipse.microprofile.openapi.annotations.enums.ParameterIn;
-import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
-
-import jakarta.ws.rs.PathParam;
-
-import javax.ws.rs.Consumes;
-
 // tag::path[]
 @Path("/v2/teams")
 // end::path[]
+// TODO: Write code to get and update information for a team
 public class TeamsResource {
 
 	private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
@@ -46,26 +40,26 @@ public class TeamsResource {
         return System.getProperties();
     }
 
-	@POST
-    @Path("/")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    // end::produces[]
-    public Properties addTeam() {
-    	logger.info("add team");
-        return System.getProperties();
-    }
-
-	@GET
-    @Path("/{team_id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    // end::produces[]
-    public Properties getTeamByID(@Parameter(required = true, description = "team identifier", name="team_id", in=ParameterIn.PATH) @PathParam("team_id") String teamId)
- {
-    	logger.info("get team by ID");
-        return System.getProperties();
-    }
-  
+//	@POST
+//    @Path("/")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    // end::produces[]
+//    public Properties addTeam() {
+//    	logger.info("add team");
+//        return System.getProperties();
+//    }
+//
+//	@GET
+//    @Path("/{team_id}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    // end::produces[]
+//    public Properties getTeamByID(@Parameter(required = true, description = "team identifier", name="team_id", in=ParameterIn.PATH) @PathParam("team_id") String teamId)
+// {
+//    	logger.info("get team by ID");
+//        return System.getProperties();
+//    }
+//  
 
 }

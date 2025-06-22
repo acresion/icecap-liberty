@@ -25,8 +25,7 @@ import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
 import org.eclipse.microprofile.openapi.annotations.info.Info;
 
 import com.icecap.config.IceCapConfig;
-import com.icecap.resources.AthleteResource;
-import com.icecap.resources.TeamsResource;
+import com.icecap.resources.LeagueResource;
 
 
 @OpenAPIDefinition(
@@ -48,8 +47,9 @@ public class IcecapApplication extends Application {
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> classes = new HashSet<>();
 		logger.info("icecap get classes");
-		classes.add(TeamsResource.class);
-		classes.add(AthleteResource.class);
+    // classes.add(TeamsResource.class);
+    // classes.add(AthleteResource.class);
+    classes.add(LeagueResource.class);
 		return classes;
 	}
 
