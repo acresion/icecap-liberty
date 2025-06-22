@@ -104,8 +104,10 @@ public class SkaterStats {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assists, athlete_id, evenStrengthGoals, evenStrengthPoints, games, goals, penaltyMinutes,
-        plusMinus, points, powerPlayGoals, powerPlayPoints, season_id, shots, team_id, year);
+    return Objects
+        .hash(assists, athlete_id, evenStrengthGoals, evenStrengthPoints, games,
+            goals, penaltyMinutes, plusMinus, points, powerPlayGoals,
+            powerPlayPoints, season_id, shots, team_id, year);
   }
 
   @Override
@@ -117,21 +119,28 @@ public class SkaterStats {
     if (getClass() != obj.getClass())
       return false;
     SkaterStats other = (SkaterStats) obj;
-    return assists == other.assists && Objects.equals(athlete_id, other.athlete_id)
-        && evenStrengthGoals == other.evenStrengthGoals && evenStrengthPoints == other.evenStrengthPoints
-        && games == other.games && goals == other.goals && penaltyMinutes == other.penaltyMinutes
-        && plusMinus == other.plusMinus && points == other.points && powerPlayGoals == other.powerPlayGoals
-        && powerPlayPoints == other.powerPlayPoints && Objects.equals(season_id, other.season_id)
-        && shots == other.shots && Objects.equals(team_id, other.team_id) && year == other.year;
+    return assists == other.assists
+        && Objects.equals(athlete_id, other.athlete_id)
+        && evenStrengthGoals == other.evenStrengthGoals
+        && evenStrengthPoints == other.evenStrengthPoints
+        && games == other.games && goals == other.goals
+        && penaltyMinutes == other.penaltyMinutes
+        && plusMinus == other.plusMinus && points == other.points
+        && powerPlayGoals == other.powerPlayGoals
+        && powerPlayPoints == other.powerPlayPoints
+        && Objects.equals(season_id, other.season_id) && shots == other.shots
+        && Objects.equals(team_id, other.team_id) && year == other.year;
   }
 
   @Override
   public String toString() {
-    return "SkaterStats [season_id=" + season_id + ", athlete_id=" + athlete_id + ", year=" + year + ", team_id="
-        + team_id + ", games=" + games + ", goals=" + goals + ", assists=" + assists + ", points=" + points
-        + ", plusMinus=" + plusMinus + ", penaltyMinutes=" + penaltyMinutes + ", evenStrengthGoals=" + evenStrengthGoals
-        + ", evenStrengthPoints=" + evenStrengthPoints + ", powerPlayGoals=" + powerPlayGoals + ", powerPlayPoints="
-        + powerPlayPoints + ", shots=" + shots + "]";
+    return "SkaterStats [season_id=" + season_id + ", athlete_id=" + athlete_id
+        + ", year=" + year + ", team_id=" + team_id + ", games=" + games
+        + ", goals=" + goals + ", assists=" + assists + ", points=" + points
+        + ", plusMinus=" + plusMinus + ", penaltyMinutes=" + penaltyMinutes
+        + ", evenStrengthGoals=" + evenStrengthGoals + ", evenStrengthPoints="
+        + evenStrengthPoints + ", powerPlayGoals=" + powerPlayGoals
+        + ", powerPlayPoints=" + powerPlayPoints + ", shots=" + shots + "]";
   }
 
   public static Builder builder() {

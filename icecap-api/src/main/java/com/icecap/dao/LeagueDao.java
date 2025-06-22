@@ -55,10 +55,6 @@ public class LeagueDao {
 
   public void addLeague(League league, Connection con) throws SQLException {
     try {
-      if (true) {
-        logger.info("");
-
-      }
 
       addLeagueInternal(league, con);
 

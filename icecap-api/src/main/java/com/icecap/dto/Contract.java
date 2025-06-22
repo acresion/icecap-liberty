@@ -75,7 +75,9 @@ public class Contract {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentName, athleteId, capHit, contractId, firstSeason, percent, status, teamName, term, value);
+    return Objects
+        .hash(agentName, athleteId, capHit, contractId, firstSeason, percent,
+            status, teamName, term, value);
   }
 
   @Override
@@ -87,18 +89,24 @@ public class Contract {
     if (getClass() != obj.getClass())
       return false;
     Contract other = (Contract) obj;
-    return Objects.equals(agentName, other.agentName) && Objects.equals(athleteId, other.athleteId)
-        && Objects.equals(capHit, other.capHit) && Objects.equals(contractId, other.contractId)
-        && firstSeason == other.firstSeason && Objects.equals(percent, other.percent)
-        && Objects.equals(status, other.status) && Objects.equals(teamName, other.teamName) && term == other.term
+    return Objects.equals(agentName, other.agentName)
+        && Objects.equals(athleteId, other.athleteId)
+        && Objects.equals(capHit, other.capHit)
+        && Objects.equals(contractId, other.contractId)
+        && firstSeason == other.firstSeason
+        && Objects.equals(percent, other.percent)
+        && Objects.equals(status, other.status)
+        && Objects.equals(teamName, other.teamName) && term == other.term
         && Objects.equals(value, other.value);
   }
 
   @Override
   public String toString() {
-    return "Contract [contractId=" + contractId + ", athleteId=" + athleteId + ", firstSeason=" + firstSeason
-        + ", agentName=" + agentName + ", teamName=" + teamName + ", term=" + term + ", value=" + value + ", capHit="
-        + capHit + ", percent=" + percent + ", status=" + status + "]";
+    return "Contract [contractId=" + contractId + ", athleteId=" + athleteId
+        + ", firstSeason=" + firstSeason + ", agentName=" + agentName
+        + ", teamName=" + teamName + ", term=" + term + ", value=" + value
+        + ", capHit=" + capHit + ", percent=" + percent + ", status=" + status
+        + "]";
   }
 
   public static Builder builder() {

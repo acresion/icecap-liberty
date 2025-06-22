@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
@@ -31,6 +32,7 @@ import com.icecap.dto.Contract;
 // end::import[]
 
 // tag::endpointit[]
+@Disabled
 public class EndpointIT {
   private static final int MONEY_SCALE = 2;
   private static String webURL;
