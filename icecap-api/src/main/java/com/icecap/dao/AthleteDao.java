@@ -17,9 +17,11 @@ import com.icecap.dto.Contract;
 public class AthleteDao {
   // TODO: This map is temporary. Now, we should manage to make a connection to
   // the database using JDBC (you can interpret code from a separate project)
-  private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
+  private static final Logger logger = Logger
+      .getLogger(MethodHandles.lookup().lookupClass().getName());
   private static final String INSERT_ATHLETE_SQL = "insert into athlete values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   private static final String INSERT_CONTRACT_SQL = "insert into contract_info values(?,?,?,?,?,?,?,?,?,?)";
+  private static final String DELETE_ATHLETE_SQL = "delete from icecap.athlete where athlete_id = ?";
 
   private static final String GET_ATHLETE_SQL = """
       select
@@ -41,6 +43,26 @@ public class AthleteDao {
         icecap.athlete
       where athlete_id = ?
       			""";
+
+  private static final String GET_ATHLETE_LIST_SQL = """
+      select
+          athlete_id
+        , current_team_id
+        , firstName
+        , lastName
+        , jNumber
+        , age
+        , pos
+        , heightFeet
+        , heightInches
+        , weightPounds
+        , agentFirst
+        , agentLast
+        , nation
+        , dob
+      from
+        icecap.athlete
+            """;
 
   private static final String GET_ATHLETES_FROM_TEAM_SQL = """
       select
@@ -96,10 +118,13 @@ public class AthleteDao {
       con.commit();
     } catch (SQLException e) {
       con.rollback();
+      throw e;
+
     }
   }
 
-  private void addAthleteInternal(Athlete athlete, Connection con) throws SQLException {
+  private void addAthleteInternal(Athlete athlete, Connection con)
+      throws SQLException {
     try (PreparedStatement p = con.prepareStatement(INSERT_ATHLETE_SQL)) {
 
       p.setString(1, athlete.getUuid().toString());
@@ -120,7 +145,8 @@ public class AthleteDao {
     }
   }
 
-  private void addContract(Contract contract, Connection con) throws SQLException {
+  private void addContract(Contract contract, Connection con)
+      throws SQLException {
     try (PreparedStatement p = con.prepareStatement(INSERT_CONTRACT_SQL)) {
 
       p.setString(1, contract.getContractId().toString());
@@ -139,7 +165,8 @@ public class AthleteDao {
 
   }
 
-  public Athlete getAthlete(String athleteId, Connection con) throws SQLException {
+  public Athlete getAthlete(String athleteId, Connection con)
+      throws SQLException {
     try {
 
       try (PreparedStatement p = con.prepareStatement(GET_ATHLETE_SQL)) {
@@ -161,10 +188,33 @@ public class AthleteDao {
     }
   }
 
-  public List<Athlete> getAthletes(String teamId, Connection con) throws SQLException {
+  public List<Athlete> getAllAthletes(Connection con) throws SQLException {
     try {
 
-      try (PreparedStatement p = con.prepareStatement(GET_ATHLETES_FROM_TEAM_SQL)) {
+      try (PreparedStatement p = con.prepareStatement(GET_ATHLETE_LIST_SQL)) {
+        logger.info("ok, no error here");
+        try (ResultSet rs = p.executeQuery()) {
+          logger.info("query should work");
+          List<Athlete> athletes = new ArrayList<>();
+          while (rs.next()) {
+            athletes.add(createAthlete(rs, con));
+          }
+          return athletes;
+        }
+      }
+    }
+    // used for select
+    finally {
+      con.rollback();
+    }
+  }
+
+  public List<Athlete> getAthletes(String teamId, Connection con)
+      throws SQLException {
+    try {
+
+      try (PreparedStatement p = con
+          .prepareStatement(GET_ATHLETES_FROM_TEAM_SQL)) {
         p.setString(1, teamId);
         logger.info(GET_ATHLETES_FROM_TEAM_SQL);
         logger.info("ok, no error here");
@@ -182,7 +232,8 @@ public class AthleteDao {
     }
   }
 
-  private Athlete createAthlete(ResultSet rs, Connection con) throws SQLException {
+  private Athlete createAthlete(ResultSet rs, Connection con)
+      throws SQLException {
     String id = rs.getString("athlete_id");
     String teamId = rs.getString("current_team_id");
     String firstName = rs.getString("firstName");
@@ -198,7 +249,8 @@ public class AthleteDao {
     String nation = rs.getString("nation");
     String birth = rs.getString("dob");
     List<Contract> contracts = new ArrayList<>();
-    try (PreparedStatement p = con.prepareStatement(GET_CONTRACT_FROM_ATHLETE_SQL)) {
+    try (PreparedStatement p = con
+        .prepareStatement(GET_CONTRACT_FROM_ATHLETE_SQL)) {
       p.setString(1, id);
       logger.info(GET_CONTRACT_FROM_ATHLETE_SQL);
       logger.info("ok, no error here");
@@ -209,10 +261,24 @@ public class AthleteDao {
         }
       }
     }
-    return Athlete.builder().withUuid(UUID.fromString(id)).withTeamID(UUID.fromString(teamId)).withFirstName(firstName)
-        .withLastName(lastName).withNumber(number).withAge(age).withPos(pos).withHeightFeet(heightFeet)
-        .withHeightInches(heightInches).withWeightPounds(weightPounds).withAgentFirstName(agentFirst)
-        .withAgentLastName(agentLast).withNationality(nation).withDateOfBirth(birth).withContracts(contracts).build();
+    return Athlete
+        .builder()
+          .withUuid(UUID.fromString(id))
+          .withTeamID(UUID.fromString(teamId))
+          .withFirstName(firstName)
+          .withLastName(lastName)
+          .withNumber(number)
+          .withAge(age)
+          .withPos(pos)
+          .withHeightFeet(heightFeet)
+          .withHeightInches(heightInches)
+          .withWeightPounds(weightPounds)
+          .withAgentFirstName(agentFirst)
+          .withAgentLastName(agentLast)
+          .withNationality(nation)
+          .withDateOfBirth(birth)
+          .withContracts(contracts)
+          .build();
 
   }
 
@@ -227,9 +293,34 @@ public class AthleteDao {
     BigDecimal capHit = rs.getBigDecimal("capHit");
     BigDecimal percent = rs.getBigDecimal("percent_at_start");
     String status = rs.getString("status");
-    return Contract.builder().withAgentName(agent).withAthleteId(UUID.fromString(athlete_id)).withCapHit(capHit)
-        .withContractId(UUID.fromString(contract_id)).withFirstSeason(season).withPercent(percent).withStatus(status)
-        .withTeamName(UUID.fromString(team_id)).withTerm(term).withValue(value).build();
+    return Contract
+        .builder()
+          .withAgentName(agent)
+          .withAthleteId(UUID.fromString(athlete_id))
+          .withCapHit(capHit)
+          .withContractId(UUID.fromString(contract_id))
+          .withFirstSeason(season)
+          .withPercent(percent)
+          .withStatus(status)
+          .withTeamName(UUID.fromString(team_id))
+          .withTerm(term)
+          .withValue(value)
+          .build();
+
+  }
+
+  public Athlete deleteAthlete(Connection con, String athleteId)
+      throws SQLException {
+    try {
+      Athlete athlete = getAthlete(athleteId, con);
+      try (PreparedStatement p = con.prepareStatement(DELETE_ATHLETE_SQL)) {
+        p.setString(1, athleteId);
+        p.execute();
+      }
+      return athlete;
+    } finally {
+      con.commit();
+    }
 
   }
 
