@@ -28,16 +28,21 @@ public class IcecapController {
     this.contractDao = new ContractDao();
   }
 
+  private static final Logger logger = Logger
+      .getLogger(MethodHandles.lookup().lookupClass().getName());
 
-  private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
-  
-  
+  public void testForException() throws SQLException {
+    logger.info("temp method to test exceptionmapper");
+    throw new SQLException("SQLException thrown");
+  }
+
   public void addLeague(League league) throws SQLException {
     // TODO: figure out how expections become REST payloads
+
     leagueDao.addLeague(league, con.connect());
     logger.info("adding league here");
   }
-  
+
   public List<League> getLeagues() throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("adding league here");
@@ -55,7 +60,8 @@ public class IcecapController {
   public void upsertLeague(League league) throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("upsert league here");
-    boolean doesExist = leagueDao.leagueExists(league.getUuid().toString(), con.connect());
+    boolean doesExist = leagueDao
+        .leagueExists(league.getUuid().toString(), con.connect());
     logger.info(Boolean.toString(doesExist));
 
   }
@@ -67,19 +73,19 @@ public class IcecapController {
     logger.info("adding team here");
   }
 
-  public List<Team> getTeams(String leagueId)
-      throws SQLException {
+  public List<Team> getTeams(String leagueId) throws SQLException {
     // TODO: figure out how expections become REST payloads
     // ok, for this, I can figure out how:
     logger.info("adding league here");
     return teamDao.getTeams(con.connect());
   }
 
-  public Team getTeamByID(String leagueId, String teamId)throws SQLException {
+  public Team getTeamByID(String leagueId, String teamId) throws SQLException {
     return teamDao.getTeam(con.connect(), teamId);
   }
 
-  public Team deleteTeamByID(String leagueId, String teamId) throws SQLException {
+  public Team deleteTeamByID(String leagueId, String teamId)
+      throws SQLException {
     return teamDao.deleteTeam(con.connect(), teamId);
   }
 
@@ -88,31 +94,36 @@ public class IcecapController {
     logger.info("upsert team here");
   }
 
-  public void addAthlete(String leagueId, String teamId, Athlete athlete) throws SQLException {
+  public void addAthlete(String leagueId, String teamId, Athlete athlete)
+      throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
     athleteDao.addAthlete(athlete, con.connect());
   }
 
-  public List<Athlete> getAthletes(String leagueId, String teamId) throws SQLException {
+  public List<Athlete> getAthletes(String leagueId, String teamId)
+      throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
     return new ArrayList<>();
   }
 
-  public Athlete getAthlete(String leagueId, String teamId, String athleteId) throws SQLException {
+  public Athlete getAthlete(String leagueId, String teamId, String athleteId)
+      throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
     return null;
   }
 
-  public Athlete deleteAthlete(String leagueId, String teamId, String athleteId) throws SQLException {
+  public Athlete deleteAthlete(String leagueId, String teamId, String athleteId)
+      throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("delete athlete here");
     return null;
   }
 
-  public void upsertAthlete(String leagueId, String teamId, Athlete athlete) throws SQLException {
+  public void upsertAthlete(String leagueId, String teamId, Athlete athlete)
+      throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("upsert athlete here");
   }
@@ -125,29 +136,31 @@ public class IcecapController {
 
   }
 
-  public List<Contract> getContracts(String leagueId, String teamId, String athleteId) throws SQLException {
+  public List<Contract> getContracts(String leagueId, String teamId,
+      String athleteId) throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("get list of contracts here");
     return new ArrayList<>();
   }
 
-  public Contract getContract(String leagueId, String teamId, String athleteId, String contractId) throws SQLException {
+  public Contract getContract(String leagueId, String teamId, String athleteId,
+      String contractId) throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("get list of contracts here");
     return null;
   }
 
-  public Contract deleteContract(String leagueId, String teamId, String athleteId, String contractId)
+  public Contract deleteContract(String leagueId, String teamId,
+      String athleteId, String contractId) throws SQLException {
+    // TODO: figure out how expections become REST payloads
+    logger.info("get list of contracts here");
+    return null;
+  }
+
+  public void upsertContract(String leagueId, String teamId, String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
-    logger.info("get list of contracts here");
-    return null;
-  }
-
-  public void upsertContract(String leagueId, String teamId, String athleteId) throws SQLException {
     // TODO: figure out how expections become REST payloads
     logger.info("upsert contract here");
   }
-
 
 }

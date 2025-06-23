@@ -134,9 +134,9 @@ public class TeamDao {
           .withGmName(gmName)
           .withOwner(owner)
           .withRetained(retained)
-          .withTeam_id(UUID.fromString(team_id))
+          .withTeam_id(UUID.fromString(league_id))
           .withTeamName(teamName)
-          .withUuid(UUID.fromString(league_id))
+          .withUuid(UUID.fromString(team_id))
           .withWebsite(website)
           .withYearFounded(yearFounded)
           .build();
