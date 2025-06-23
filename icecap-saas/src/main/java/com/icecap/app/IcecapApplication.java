@@ -26,6 +26,7 @@ import org.eclipse.microprofile.openapi.annotations.info.Info;
 
 import com.icecap.config.IceCapConfig;
 import com.icecap.resources.LeagueResource;
+import com.icecap.resources.SQLExceptionMapper;
 
 
 @OpenAPIDefinition(
@@ -50,6 +51,7 @@ public class IcecapApplication extends Application {
     // classes.add(TeamsResource.class);
     // classes.add(AthleteResource.class);
     classes.add(LeagueResource.class);
+    classes.add(SQLExceptionMapper.class);
 		return classes;
 	}
 

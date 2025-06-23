@@ -47,6 +47,18 @@ public class LeagueResource {
 
   private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
+  @GET
+  @Path("/execeptionTest")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  // end::produces[]
+  public void testException() throws SQLException {
+    // TODO: figure out how expections become REST payloads
+
+    controller.testForException();
+
+  }
+
 
   @POST
   @Path("/")
