@@ -48,7 +48,7 @@ public class LeagueResource {
   private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
   @GET
-  @Path("/execeptionTest")
+  @Path("/exceptionTest")
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   // end::produces[]
