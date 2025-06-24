@@ -29,6 +29,7 @@ dependencies {
 	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.19.0'
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
 	implementation 'org.jsoup:jsoup:1.17.2'
+	testImplementation libs.mockito
 	
 	
 }

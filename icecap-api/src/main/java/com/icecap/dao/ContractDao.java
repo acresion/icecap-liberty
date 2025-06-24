@@ -119,4 +119,42 @@ public class ContractDao {
     }
 
   }
+
+  public Contract getContract(String contractId, Connection con)
+      throws SQLException {
+    try {
+
+      try (PreparedStatement p = con.prepareStatement(GET_CONTRACT_SQL)) {
+        p.setString(1, contractId);
+        logger.info(GET_CONTRACT_SQL);
+        logger.info("ok, no error here");
+        try (ResultSet rs = p.executeQuery()) {
+          logger.info("query should work");
+          if (rs.next()) {
+            return createContract(rs);
+          }
+          return null;
+        }
+      }
+    }
+    // used for select
+    finally {
+      con.rollback();
+    }
+  }
+
+  public Contract deleteContract(Connection con, String contractId)
+      throws SQLException {
+    try {
+      Contract contract = getContract(contractId, con);
+      try (PreparedStatement p = con.prepareStatement(DELETE_CONTRACT_SQL)) {
+        p.setString(1, contractId);
+        p.execute();
+      }
+      return contract;
+    } finally {
+      con.commit();
+    }
+
+  }
 }

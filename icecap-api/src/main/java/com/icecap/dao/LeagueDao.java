@@ -117,7 +117,6 @@ public class LeagueDao {
     try {
       try (PreparedStatement p = con.prepareStatement(SELECT_ALL_LEAGUE_SQL)) {
         try (ResultSet rs = p.executeQuery()) {
-          logger.info("query should work");
           while (rs.next()) {
             lister.add(createLeague(rs));
           }
@@ -136,7 +135,6 @@ public class LeagueDao {
       try (PreparedStatement p = con.prepareStatement(SELECT_LEAGUE_SQL)) {
         p.setString(1, leagueId);
         try (ResultSet rs = p.executeQuery()) {
-          logger.info("query should work");
           if (rs.next()) {
             return createLeague(rs);
           }
