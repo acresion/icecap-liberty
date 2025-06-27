@@ -1,15 +1,10 @@
 package com.icecap.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +12,13 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.icecap.dto.League;
+import com.icecap.sql.MockConnection;
+import com.icecap.sql.MockResultSet;
 
-@Disabled
+
 class LeagueDaoTest {
 
   @BeforeAll
@@ -34,24 +30,37 @@ class LeagueDaoTest {
   }
 
   public Connection createMockConnection() throws SQLException {
-    Connection con = mock(Connection.class);
-    PreparedStatement ps = mock(PreparedStatement.class);
-    ResultSet rs = mock(ResultSet.class);
-    when(con.prepareStatement(anyString())).thenReturn(ps);
-    when(ps.executeQuery()).thenReturn(rs);
-    when(rs.next()).thenReturn(true, false);
-    when(rs.getString("league_id"))
-        .thenReturn("1c40ae21-f852-4c19-ae3e-7d648fb741d5");
-    when(rs.getString("name")).thenReturn("NHL");
-    when(rs.getString("sport")).thenReturn("Ice hockey");
-    when(rs.getInt("founded")).thenReturn(1917);
-    when(rs.getString("commissioner")).thenReturn("Jon Arbuckle");
-    when(rs.getInt("teams")).thenReturn(11);
-    when(rs.getInt("roster_limit")).thenReturn(12);
-    when(rs.getBigDecimal("salary_cap"))
-        .thenReturn(new BigDecimal("14.00").setScale(2));
-    when(rs.getInt("contracts_limit")).thenReturn(13);
-    when(rs.getInt("retained_limit")).thenReturn(3);
+    MockResultSet rs = new MockResultSet();
+    // Mock Driver Pattern
+    rs
+        .addHeaders(new String[] { "league_id", "name", "sport", "founded",
+            "commissioner", "teams", "roster_limit", "salary_cap",
+            "contracts_limit", "retained_limit", "doesExist" });
+    rs
+        .addRow(new Object[] { "1c40ae21-f852-4c19-ae3e-7d648fb741d5", "NHL",
+            "Ice hockey", 1917, "Jon Arbuckle", 11, 12,
+            new BigDecimal("14.00").setScale(2), 13, 3, 1 });
+
+
+    Connection con = MockConnection.wireConnection(rs);
+//    Connection con = mock(Connection.class);
+//    PreparedStatement ps = mock(PreparedStatement.class);
+//    ResultSet rs = mock(ResultSet.class);
+//    when(con.prepareStatement(anyString())).thenReturn(ps);
+//    when(ps.executeQuery()).thenReturn(rs);
+//    when(rs.next()).thenReturn(true, false);
+//    when(rs.getString("league_id"))
+//        .thenReturn("1c40ae21-f852-4c19-ae3e-7d648fb741d5");
+//    when(rs.getString("name")).thenReturn("NHL");
+//    when(rs.getString("sport")).thenReturn("Ice hockey");
+//    when(rs.getInt("founded")).thenReturn(1917);
+//    when(rs.getString("commissioner")).thenReturn("Jon Arbuckle");
+//    when(rs.getInt("teams")).thenReturn(11);
+//    when(rs.getInt("roster_limit")).thenReturn(12);
+//    when(rs.getBigDecimal("salary_cap"))
+//        .thenReturn(new BigDecimal("14.00").setScale(2));
+//    when(rs.getInt("contracts_limit")).thenReturn(13);
+//    when(rs.getInt("retained_limit")).thenReturn(3);
 
     return con;
   }
@@ -102,13 +111,19 @@ class LeagueDaoTest {
 
 
   @Test
-  void testDeleteLeague() {
-    fail("Not yet implemented");
+  void testDeleteLeague() throws SQLException {
+    Connection con = createMockConnection();
+    League league = createLeague();
+    LeagueDao dao = new LeagueDao();
+    assertEquals(league,
+        dao.deleteLeague(con, "1c40ae21-f852-4c19-ae3e-7d648fb741d5"));
   }
 
   @Test
-  void testLeagueExists() {
-    fail("Not yet implemented");
+  void testLeagueExists() throws SQLException {
+    Connection con = createMockConnection();
+    LeagueDao dao = new LeagueDao();
+    assertTrue(dao.leagueExists("1c40ae21-f852-4c19-ae3e-7d648fb741d5", con));
   }
 
 }

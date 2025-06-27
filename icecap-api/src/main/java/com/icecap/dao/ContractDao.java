@@ -102,9 +102,7 @@ public class ContractDao {
 
     try {
       try (PreparedStatement p = con.prepareStatement(GET_ALL_CONTRACTS_SQL)) {
-        logger.info("ok, no error here");
         try (ResultSet rs = p.executeQuery()) {
-          logger.info("query should work");
           List<Contract> contract = new ArrayList<>();
           while (rs.next()) {
             contract.add(createContract(rs));
@@ -127,9 +125,7 @@ public class ContractDao {
       try (PreparedStatement p = con.prepareStatement(GET_CONTRACT_SQL)) {
         p.setString(1, contractId);
         logger.info(GET_CONTRACT_SQL);
-        logger.info("ok, no error here");
         try (ResultSet rs = p.executeQuery()) {
-          logger.info("query should work");
           if (rs.next()) {
             return createContract(rs);
           }

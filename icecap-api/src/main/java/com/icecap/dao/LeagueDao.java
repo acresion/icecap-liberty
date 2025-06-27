@@ -135,7 +135,7 @@ public class LeagueDao {
       try (PreparedStatement p = con.prepareStatement(SELECT_LEAGUE_SQL)) {
         p.setString(1, leagueId);
         try (ResultSet rs = p.executeQuery()) {
-          if (rs.next()) {
+          while (rs.next()) {
             return createLeague(rs);
           }
 
@@ -170,7 +170,6 @@ public class LeagueDao {
       try (PreparedStatement p = con.prepareStatement(EXISTS_LEAGUE_SQL)) {
         p.setString(1, leagueId);
         try (ResultSet rs = p.executeQuery()) {
-          logger.info("query should work");
           if (rs.next()) {
             return rs.getInt("doesExist") == 1;
           }
