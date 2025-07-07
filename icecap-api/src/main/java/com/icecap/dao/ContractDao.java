@@ -53,7 +53,7 @@ public class ContractDao {
       delete from icecap.contract_info where contract_id = ?
             """;
 
-  private void addContract(Contract contract, Connection con)
+  public void addContract(Contract contract, Connection con)
       throws SQLException {
     try (PreparedStatement p = con.prepareStatement(INSERT_CONTRACT_SQL)) {
       p.setString(1, contract.getContractId().toString());
