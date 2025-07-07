@@ -1,9 +1,15 @@
 package com.icecap.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
@@ -11,6 +17,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import com.icecap.dto.Contract;
 import com.icecap.sql.MockConnection;
@@ -95,6 +102,42 @@ class ContractDaoTest {
     ContractDao dao = new ContractDao();
     assertEquals(contract,
         dao.deleteContract(con, "1c40ae21-f852-4c19-ae3e-7d648fb741d5"));
+
+  }
+
+  @Test
+  void testAddContract() throws SQLException {
+    Connection con = mock(Connection.class);
+    PreparedStatement p = mock(PreparedStatement.class);
+    when(con.prepareStatement(anyString())).thenReturn(p);
+    Contract c = createContract();
+    // test
+    ContractDao dao = new ContractDao();
+    dao.addContract(c, con);
+
+    // verification
+    ArgumentCaptor<Integer> indexCapture = ArgumentCaptor
+        .forClass(Integer.class);
+    ArgumentCaptor<Integer> valueIntCapture = ArgumentCaptor
+        .forClass(Integer.class);
+    ArgumentCaptor<Integer> stringCapture = ArgumentCaptor
+        .forClass(Integer.class);
+    ArgumentCaptor<String> valueStringCapture = ArgumentCaptor
+        .forClass(String.class);
+
+    // The reason why we call the times(7) is that we want it to invoke this
+    // verification for as many times as there are integers in the method(which
+    // there are 7)
+    verify(p, times(2))
+        .setInt(indexCapture.capture(), valueIntCapture.capture());
+    verify(p, times(5))
+        .setString(stringCapture.capture(), valueStringCapture.capture());
+    verify(p).execute();
+    assertEquals(3, indexCapture.getAllValues().get(0));
+    assertEquals(1918, valueIntCapture.getAllValues().get(0));
+    assertEquals(1, stringCapture.getAllValues().get(0));
+    assertEquals("1c40ae21-f852-4c19-ae3e-7d648fb741d5",
+        valueStringCapture.getAllValues().get(0));
 
   }
 
