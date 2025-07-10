@@ -15,8 +15,7 @@ import com.icecap.dto.Athlete;
 import com.icecap.dto.Contract;
 
 public class AthleteDao {
-  // TODO: This map is temporary. Now, we should manage to make a connection to
-  // the database using JDBC (you can interpret code from a separate project)
+
   private static final Logger logger = Logger
       .getLogger(MethodHandles.lookup().lookupClass().getName());
   private static final String INSERT_ATHLETE_SQL = "insert into athlete values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -113,7 +112,6 @@ public class AthleteDao {
       for (Contract contract : athlete.getContracts()) {
         addContract(contract, con);
       }
-      // TODO: add stats;
       // use for writing (insert, update, delete)
       con.commit();
     } catch (SQLException e) {

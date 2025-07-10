@@ -2,7 +2,6 @@ package com.icecap.dao;
 
 import java.lang.invoke.MethodHandles;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -37,14 +36,12 @@ public class IcecapController {
   }
 
   public void addLeague(League league) throws SQLException {
-    // TODO: figure out how expections become REST payloads
 
     leagueDao.addLeague(league, con.connect());
     logger.info("adding league here");
   }
 
   public List<League> getLeagues() throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("adding league here");
     return leagueDao.getLeagues(con.connect());
   }
@@ -58,7 +55,6 @@ public class IcecapController {
   }
 
   public void upsertLeague(League league) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("upsert league here");
     boolean doesExist = leagueDao
         .leagueExists(league.getUuid().toString(), con.connect());
@@ -67,14 +63,12 @@ public class IcecapController {
   }
 
   public void addTeam(String leagueId, Team team) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     League league = getLeagueByID(leagueId);
     teamDao.addTeam(team, con.connect());
     logger.info("adding team here");
   }
 
   public List<Team> getTeams(String leagueId) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     // ok, for this, I can figure out how:
     logger.info("adding league here");
     return teamDao.getTeams(con.connect());
@@ -90,76 +84,66 @@ public class IcecapController {
   }
 
   public void upsertTeam(String leagueId, Team team) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("upsert team here");
   }
 
   public void addAthlete(String leagueId, String teamId, Athlete athlete)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
     athleteDao.addAthlete(athlete, con.connect());
   }
 
   public List<Athlete> getAthletes(String leagueId, String teamId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
-    return new ArrayList<>();
+    return athleteDao.getAllAthletes(con.connect());
   }
 
   public Athlete getAthlete(String leagueId, String teamId, String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
-    return null;
+    return athleteDao.getAthlete(athleteId, con.connect());
+
   }
 
   public Athlete deleteAthlete(String leagueId, String teamId, String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("delete athlete here");
-    return null;
+    return athleteDao.deleteAthlete(con.connect(), athleteId);
   }
 
   public void upsertAthlete(String leagueId, String teamId, Athlete athlete)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("upsert athlete here");
   }
 
   public void addContract(String leagueId, String teamId, String athleteId,
 
       Contract contract) throws SQLException {
-    // TODO: figure out how expections become REST payloads
-    logger.info("adding athlete here");
+    contractDao.addContract(contract, con.connect());
 
   }
 
   public List<Contract> getContracts(String leagueId, String teamId,
       String athleteId) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("get list of contracts here");
-    return new ArrayList<>();
+    return contractDao.getContractList(con.connect());
   }
 
   public Contract getContract(String leagueId, String teamId, String athleteId,
       String contractId) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("get list of contracts here");
-    return null;
+    return contractDao.getContract(contractId, con.connect());
   }
 
   public Contract deleteContract(String leagueId, String teamId,
       String athleteId, String contractId) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("get list of contracts here");
-    return null;
+    return contractDao.deleteContract(con.connect(), contractId);
   }
 
   public void upsertContract(String leagueId, String teamId, String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("upsert contract here");
   }
 
