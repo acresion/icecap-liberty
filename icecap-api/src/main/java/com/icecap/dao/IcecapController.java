@@ -1,6 +1,7 @@
 package com.icecap.dao;
 
 import java.lang.invoke.MethodHandles;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
@@ -31,120 +32,164 @@ public class IcecapController {
       .getLogger(MethodHandles.lookup().lookupClass().getName());
 
   public void testForException() throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("temp method to test exceptionmapper");
     throw new SQLException("SQLException thrown");
   }
+  }
 
   public void addLeague(League league) throws SQLException {
+    try (Connection c = con.connect()) {
 
-    leagueDao.addLeague(league, con.connect());
+      leagueDao.addLeague(league, c);
     logger.info("adding league here");
+
+  }
   }
 
   public List<League> getLeagues() throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("adding league here");
-    return leagueDao.getLeagues(con.connect());
+    return leagueDao.getLeagues(c);
+  }
   }
 
   public League getLeagueByID(String leagueId) throws SQLException {
-    return leagueDao.getLeague(con.connect(), leagueId);
+    try (Connection c = con.connect()) {
+      return leagueDao.getLeague(c, leagueId);
+    }
   }
 
   public League deleteLeagueByID(String leagueId) throws SQLException {
-    return leagueDao.deleteLeague(con.connect(), leagueId);
+    try (Connection c = con.connect()) {
+      return leagueDao.deleteLeague(c, leagueId);
+    }
   }
 
   public void upsertLeague(League league) throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("upsert league here");
     boolean doesExist = leagueDao
-        .leagueExists(league.getUuid().toString(), con.connect());
+        .leagueExists(league.getUuid().toString(), c);
     logger.info(Boolean.toString(doesExist));
+  }
 
   }
 
   public void addTeam(String leagueId, Team team) throws SQLException {
+    try (Connection c = con.connect()) {
     League league = getLeagueByID(leagueId);
-    teamDao.addTeam(team, con.connect());
+      teamDao.addTeam(team, c);
     logger.info("adding team here");
+    }
   }
 
   public List<Team> getTeams(String leagueId) throws SQLException {
     // ok, for this, I can figure out how:
-    logger.info("adding league here");
-    return teamDao.getTeams(con.connect());
+
+    try (Connection c = con.connect()) {
+      logger.info("Extracting teams for the league: " + leagueId);
+      return teamDao.getTeams(c);
+  }
   }
 
   public Team getTeamByID(String leagueId, String teamId) throws SQLException {
-    return teamDao.getTeam(con.connect(), teamId);
+    try (Connection c = con.connect()) {
+      return teamDao.getTeam(c, teamId);
+    }
   }
 
   public Team deleteTeamByID(String leagueId, String teamId)
       throws SQLException {
-    return teamDao.deleteTeam(con.connect(), teamId);
+    try (Connection c = con.connect()) {
+      return teamDao.deleteTeam(c, teamId);
+    }
   }
 
   public void upsertTeam(String leagueId, Team team) throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("upsert team here");
+    }
   }
 
   public void addAthlete(String leagueId, String teamId, Athlete athlete)
       throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("adding athlete here");
-    athleteDao.addAthlete(athlete, con.connect());
+    athleteDao.addAthlete(athlete, c);
+  }
   }
 
   public List<Athlete> getAthletes(String leagueId, String teamId)
       throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("adding athlete here");
-    return athleteDao.getAllAthletes(con.connect());
+    return athleteDao.getAllAthletes(c);
+  }
   }
 
   public Athlete getAthlete(String leagueId, String teamId, String athleteId)
       throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("adding athlete here");
-    return athleteDao.getAthlete(athleteId, con.connect());
+    return athleteDao.getAthlete(athleteId, c);
+  }
 
   }
 
   public Athlete deleteAthlete(String leagueId, String teamId, String athleteId)
       throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("delete athlete here");
-    return athleteDao.deleteAthlete(con.connect(), athleteId);
+    return athleteDao.deleteAthlete(c, athleteId);
+    }
   }
 
   public void upsertAthlete(String leagueId, String teamId, Athlete athlete)
       throws SQLException {
+    try (Connection c = con.connect()) {
     logger.info("upsert athlete here");
+    }
   }
 
   public void addContract(String leagueId, String teamId, String athleteId,
 
       Contract contract) throws SQLException {
-    contractDao.addContract(contract, con.connect());
+    try (Connection c = con.connect()) {
+      contractDao.addContract(contract, c);
+    }
 
   }
 
   public List<Contract> getContracts(String leagueId, String teamId,
       String athleteId) throws SQLException {
-    logger.info("get list of contracts here");
-    return contractDao.getContractList(con.connect());
+    try (Connection c = con.connect()) {
+      logger.info("get list of contracts here");
+      return contractDao.getContractList(c);
+    }
   }
 
   public Contract getContract(String leagueId, String teamId, String athleteId,
       String contractId) throws SQLException {
-    logger.info("get list of contracts here");
-    return contractDao.getContract(contractId, con.connect());
+    try (Connection c = con.connect()) {
+      logger.info("get list of contracts here");
+      return contractDao.getContract(contractId, c);
+    }
   }
 
   public Contract deleteContract(String leagueId, String teamId,
       String athleteId, String contractId) throws SQLException {
-    logger.info("get list of contracts here");
-    return contractDao.deleteContract(con.connect(), contractId);
+    try (Connection c = con.connect()) {
+      logger.info("get list of contracts here");
+      return contractDao.deleteContract(c, contractId);
+    }
   }
 
   public void upsertContract(String leagueId, String teamId, String athleteId)
       throws SQLException {
-    logger.info("upsert contract here");
+    try (Connection c = con.connect()) {
+      logger.info("upsert contract here");
+    }
   }
 
 }
