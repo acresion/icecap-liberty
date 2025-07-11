@@ -36,7 +36,6 @@ public class LeagueResource {
   private final ConnectionToSQL con;
   private final IcecapController controller;
 
-// TODO: Update code for league
   public LeagueResource(@Context IcecapApplication app) {
     this.config = app.getConfig();
     this.con = new ConnectionToSQL(this.config.getMySqlConfig());
@@ -46,31 +45,14 @@ public class LeagueResource {
   private LeagueDao leagueDao = new LeagueDao();
 
   private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
-
-  @GET
-  @Path("/exceptionTest")
-  @Produces(MediaType.APPLICATION_JSON)
-  @Consumes(MediaType.APPLICATION_JSON)
-  // end::produces[]
-  public void testException() throws SQLException {
-    // TODO: figure out how expections become REST payloads
-
-    controller.testForException();
-
-  }
-
-
   @POST
   @Path("/")
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   // end::produces[]
   public void addLeague(League league) throws SQLException {
-    // TODO: figure out how expections become REST payloads
 
     controller.addLeague(league);
-
-
   }
 
   @GET
@@ -78,7 +60,7 @@ public class LeagueResource {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public List<League> getLeagues() throws SQLException {
-    // TODO: figure out how expections become REST payloads
+    logger.info("We getting leagues");
     return controller.getLeagues();
   }
 
@@ -111,7 +93,6 @@ public class LeagueResource {
   @Consumes(MediaType.APPLICATION_JSON)
   // end::produces[]
   public void upsertLeague(League league) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     controller.upsertLeague(league);
   }
 
@@ -124,7 +105,6 @@ public class LeagueResource {
   public void addTeam(
       @Parameter(required = true, description = "league identifier", name = "league_id", in = ParameterIn.PATH) @PathParam("league_id") String leagueId,
       Team team) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     controller.addTeam(leagueId, team);
   }
 
@@ -132,11 +112,9 @@ public class LeagueResource {
   @Path("/{league_id}/teams")
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
-  // end::produces[]
   public List<Team> getTeams(
       @Parameter(required = true, description = "league identifier", name = "league_id", in = ParameterIn.PATH) @PathParam("league_id") String leagueId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("adding league here");
     return controller.getTeams(leagueId);
   }
@@ -173,7 +151,6 @@ public class LeagueResource {
   public void upsertTeam(
       @Parameter(required = true, description = "league identifier", name = "league_id", in = ParameterIn.PATH) @PathParam("league_id") String leagueId,
       Team team) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     controller.upsertTeam(leagueId, team);
   }
 
@@ -187,7 +164,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId,
       Athlete athlete)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     controller.addAthlete(leagueId, teamId, athlete);
   }
 
@@ -201,7 +177,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId
 )
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("adding athlete here");
     return controller.getAthletes(leagueId, teamId);
   }
@@ -216,7 +191,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId,
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("get athlete here");
     return controller.getAthlete(leagueId, teamId, athleteId);
   }
@@ -231,7 +205,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId,
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("delete athlete here");
     return controller.deleteAthlete(leagueId, teamId, athleteId);
   }
@@ -245,7 +218,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "league identifier", name = "league_id", in = ParameterIn.PATH) @PathParam("league_id") String leagueId,
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId,
       Athlete athlete) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("upsert athlete here");
     controller.upsertAthlete(leagueId, teamId, athlete);
   }
@@ -261,7 +233,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId,
 
       Contract contract) throws SQLException {
-    // TODO: figure out how expections become REST payloads
     controller.addContract(leagueId, teamId, athleteId, contract);
   }
 
@@ -275,7 +246,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId,
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("get list of contracts here");
     return controller.getContracts(leagueId, teamId, athleteId);
   }
@@ -291,7 +261,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId,
       @Parameter(required = true, description = "contract identifier", name = "contract_id", in = ParameterIn.PATH) @PathParam("contract_id") String contractId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("get contract here");
     return controller.getContract(leagueId, teamId, athleteId, contractId);
   }
@@ -307,7 +276,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId,
       @Parameter(required = true, description = "contract identifier", name = "contract_id", in = ParameterIn.PATH) @PathParam("contract_id") String contractId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("delete contract here");
     return controller.deleteContract(leagueId, teamId, athleteId, contractId);
 
@@ -323,7 +291,6 @@ public class LeagueResource {
       @Parameter(required = true, description = "team identifier", name = "team_id", in = ParameterIn.PATH) @PathParam("team_id") String teamId,
       @Parameter(required = true, description = "athlete identifier", name = "athlete_id", in = ParameterIn.PATH) @PathParam("athlete_id") String athleteId)
       throws SQLException {
-    // TODO: figure out how expections become REST payloads
     logger.info("upsert contract here");
     controller.upsertContract(leagueId, teamId, athleteId);
   }
