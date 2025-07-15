@@ -1,6 +1,7 @@
 package com.icecap.dto;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.UUID;
 
 // develop the two classes, though don't do anything with them yet
@@ -101,6 +102,46 @@ public class GoalieStats {
 
   public int getShutouts() {
     return shutouts;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects
+        .hash(athlete_id, gaa, gamesPlayed, gamesStarted, goalsAgainst, losses,
+            overtimeLosses, savePercent, saves, season_id, shotsAgainst,
+            shutouts, team_id, wins, yearSkate);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    GoalieStats other = (GoalieStats) obj;
+    return Objects.equals(athlete_id, other.athlete_id)
+        && Objects.equals(gaa, other.gaa) && gamesPlayed == other.gamesPlayed
+        && gamesStarted == other.gamesStarted
+        && goalsAgainst == other.goalsAgainst && losses == other.losses
+        && overtimeLosses == other.overtimeLosses
+        && Objects.equals(savePercent, other.savePercent)
+        && saves == other.saves && Objects.equals(season_id, other.season_id)
+        && shotsAgainst == other.shotsAgainst && shutouts == other.shutouts
+        && Objects.equals(team_id, other.team_id) && wins == other.wins
+        && yearSkate == other.yearSkate;
+  }
+
+  @Override
+  public String toString() {
+    return "GoalieStats [season_id=" + season_id + ", athlete_id=" + athlete_id
+        + ", yearSkate=" + yearSkate + ", team_id=" + team_id + ", gamesPlayed="
+        + gamesPlayed + ", gamesStarted=" + gamesStarted + ", wins=" + wins
+        + ", losses=" + losses + ", overtimeLosses=" + overtimeLosses
+        + ", shotsAgainst=" + shotsAgainst + ", saves=" + saves
+        + ", goalsAgainst=" + goalsAgainst + ", gaa=" + gaa + ", savePercent="
+        + savePercent + ", shutouts=" + shutouts + "]";
   }
 
   public static Builder builder() {

@@ -40,6 +40,7 @@ public class TeamDao {
          , website
       from
         icecap.team
+      where in_league_id = ?
 
       """;
   private static final String SELECT_TEAM_SQL = """
@@ -143,10 +144,12 @@ public class TeamDao {
 
   }
 
-  public List<Team> getTeams(Connection con) throws SQLException {
+  public List<Team> getTeams(Connection con, String leagueId)
+      throws SQLException {
     try {
       List<Team> lister = new ArrayList<>();
       try (PreparedStatement p = con.prepareStatement(SELECT_ALL_TEAMS_SQL)) {
+        p.setString(1, leagueId);
         try (ResultSet rs = p.executeQuery()) {
           logger.info("query should work");
           while (rs.next()) {

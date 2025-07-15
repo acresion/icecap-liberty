@@ -79,7 +79,8 @@ class ContractDaoTest {
     Contract contract = createContract();
     Connection con = createMockConnection();
     ContractDao dao = new ContractDao();
-    assertEquals(List.of(contract), dao.getContractList(con));
+    assertEquals(List.of(contract),
+        dao.getContractList(con, "5d5a4aac-ea2c-4bc1-8c97-94f8560f7272"));
 
   }
 

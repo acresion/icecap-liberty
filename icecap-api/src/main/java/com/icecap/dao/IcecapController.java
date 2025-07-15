@@ -33,25 +33,25 @@ public class IcecapController {
 
   public void testForException() throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("temp method to test exceptionmapper");
-    throw new SQLException("SQLException thrown");
-  }
+      logger.info("temp method to test exceptionmapper");
+      throw new SQLException("SQLException thrown");
+    }
   }
 
   public void addLeague(League league) throws SQLException {
     try (Connection c = con.connect()) {
 
       leagueDao.addLeague(league, c);
-    logger.info("adding league here");
+      logger.info("adding league here");
 
-  }
+    }
   }
 
   public List<League> getLeagues() throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("adding league here");
-    return leagueDao.getLeagues(c);
-  }
+      logger.info("adding league here");
+      return leagueDao.getLeagues(c);
+    }
   }
 
   public League getLeagueByID(String leagueId) throws SQLException {
@@ -68,19 +68,19 @@ public class IcecapController {
 
   public void upsertLeague(League league) throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("upsert league here");
-    boolean doesExist = leagueDao
-        .leagueExists(league.getUuid().toString(), c);
-    logger.info(Boolean.toString(doesExist));
-  }
+      logger.info("upsert league here");
+      boolean doesExist = leagueDao
+          .leagueExists(league.getUuid().toString(), c);
+      logger.info(Boolean.toString(doesExist));
+    }
 
   }
 
   public void addTeam(String leagueId, Team team) throws SQLException {
     try (Connection c = con.connect()) {
-    League league = getLeagueByID(leagueId);
+      League league = getLeagueByID(leagueId);
       teamDao.addTeam(team, c);
-    logger.info("adding team here");
+      logger.info("adding team here");
     }
   }
 
@@ -89,8 +89,8 @@ public class IcecapController {
 
     try (Connection c = con.connect()) {
       logger.info("Extracting teams for the league: " + leagueId);
-      return teamDao.getTeams(c);
-  }
+      return teamDao.getTeams(c, leagueId);
+    }
   }
 
   public Team getTeamByID(String leagueId, String teamId) throws SQLException {
@@ -108,47 +108,47 @@ public class IcecapController {
 
   public void upsertTeam(String leagueId, Team team) throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("upsert team here");
+      logger.info("upsert team here");
     }
   }
 
   public void addAthlete(String leagueId, String teamId, Athlete athlete)
       throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("adding athlete here");
-    athleteDao.addAthlete(athlete, c);
-  }
+      logger.info("adding athlete here");
+      athleteDao.addAthlete(athlete, c);
+    }
   }
 
   public List<Athlete> getAthletes(String leagueId, String teamId)
       throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("adding athlete here");
-    return athleteDao.getAllAthletes(c);
-  }
+      logger.info("adding athlete here");
+      return athleteDao.getAthletes(teamId, c);
+    }
   }
 
   public Athlete getAthlete(String leagueId, String teamId, String athleteId)
       throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("adding athlete here");
-    return athleteDao.getAthlete(athleteId, c);
-  }
+      logger.info("adding athlete here");
+      return athleteDao.getAthlete(athleteId, c);
+    }
 
   }
 
   public Athlete deleteAthlete(String leagueId, String teamId, String athleteId)
       throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("delete athlete here");
-    return athleteDao.deleteAthlete(c, athleteId);
+      logger.info("delete athlete here");
+      return athleteDao.deleteAthlete(c, athleteId);
     }
   }
 
   public void upsertAthlete(String leagueId, String teamId, Athlete athlete)
       throws SQLException {
     try (Connection c = con.connect()) {
-    logger.info("upsert athlete here");
+      logger.info("upsert athlete here");
     }
   }
 
@@ -165,7 +165,7 @@ public class IcecapController {
       String athleteId) throws SQLException {
     try (Connection c = con.connect()) {
       logger.info("get list of contracts here");
-      return contractDao.getContractList(c);
+      return contractDao.getContractList(c, athleteId);
     }
   }
 
