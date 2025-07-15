@@ -31,6 +31,7 @@ public class ContractDao {
         , status
       from
         icecap.contract_info
+      where player_id = ?
             """;
 
   private static final String GET_CONTRACT_SQL = """
@@ -98,10 +99,12 @@ public class ContractDao {
 
   }
 
-  public List<Contract> getContractList(Connection con) throws SQLException {
+  public List<Contract> getContractList(Connection con, String athleteId)
+      throws SQLException {
 
     try {
       try (PreparedStatement p = con.prepareStatement(GET_ALL_CONTRACTS_SQL)) {
+        p.setString(1, athleteId);
         try (ResultSet rs = p.executeQuery()) {
           List<Contract> contract = new ArrayList<>();
           while (rs.next()) {

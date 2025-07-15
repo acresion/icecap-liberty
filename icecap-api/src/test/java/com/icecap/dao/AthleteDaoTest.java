@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,7 +56,6 @@ class AthleteDaoTest {
           .withAge(3)
           .withAgentFirstName("x")
           .withAgentLastName("y")
-          .withContracts(Collections.emptyList())
           .withDateOfBirth("n")
           .withFirstName("a")
           .withHeightFeet(3)
@@ -140,7 +138,7 @@ class AthleteDaoTest {
     Athlete athlete = createAthlete();
     AthleteDao dao = new AthleteDao();
     assertEquals(List.of(athlete),
-        dao.getAllAthletes(con));
+        dao.getAllAthletes(con, "def7e0d7-7d11-4171-ae49-4f2c4ac7f328"));
 
   }
 

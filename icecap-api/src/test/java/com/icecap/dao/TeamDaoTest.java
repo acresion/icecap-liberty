@@ -85,7 +85,8 @@ class TeamDaoTest {
     List<Team> teamList = new ArrayList<>();
     teamList.add(team);
     TeamDao dao = new TeamDao();
-    assertEquals(teamList, dao.getTeams(con));
+    assertEquals(teamList,
+        dao.getTeams(con, "ee1b2aca-1cf1-41a7-8896-d0bf856bdf38"));
   }
 
   @Test
