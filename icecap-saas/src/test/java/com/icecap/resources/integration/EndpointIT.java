@@ -13,13 +13,11 @@ package com.icecap.resources.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
-import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -28,8 +26,6 @@ import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
 import com.icecap.dto.Athlete;
-import com.icecap.dto.Contract;
-// end::import[]
 
 // tag::endpointit[]
 @Disabled
@@ -71,22 +67,7 @@ public class EndpointIT {
 				.withAgentLastName("Herbert")
 				.withNationality("Canada")
 				.withDateOfBirth("Jan 14, 1984")
-				.withContracts(List.of(
-				    Contract
-				    .builder()
-				    .withAgentName("abc")
-				    .withAthleteId(athleteID)
-				    .withCapHit(new BigDecimal("1000.11").setScale(MONEY_SCALE))
-				    .withContractId(contractId)
-				    .withFirstSeason(1918)
-				    .withPercent(new BigDecimal("10.82").setScale(MONEY_SCALE))
-				    .withStatus("RFA")
-				    .withTeamName(teamId)
-				    .withTerm(5)
-				    .withValue(new BigDecimal("100.20").setScale(MONEY_SCALE))
-				    .build()
-				    )
-				    )
+
 				.build();
 		
 
