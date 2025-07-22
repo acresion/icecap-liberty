@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icecap-api
+  labels:
+    app: icecap-api
+spec:
+  replicas: 3
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: icecap-api
+  template:
+    metadata:
+      labels:
+        app: icecap-api
+    spec:
+      containers:
+      - name: nodejs-gui
+        image: acresion/icecap-api:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 1000m
+            memory: 1Gi        
+        ports:
+        - containerPort: 3000
