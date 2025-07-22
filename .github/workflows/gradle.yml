@@ -35,6 +35,16 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: pwd && chmod u+x gradlew && ls -la && ./gradlew build --info
+    - name: Build the Docker image
+      run: | 
+        docker build . -t acresion/icecap-api:latest
+        docker build . -t acresion/icecap-api:1.0.${{github.run_number}}
+
+    - name: push the image
+      run: |
+        docker login -u acresion -p ${{secrets.DOCKER_HUB_TOKEN}}
+        docker push acresion/icecap-api:latest
+        docker push acresion/icecap-api:1.0.${{github.run_number}}
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle  Wrapper configured, you can use the following configuration to run Gradle with a specified version.
