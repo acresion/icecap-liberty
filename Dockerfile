@@ -11,7 +11,7 @@ RUN features.sh
 COPY --chown=1001:0  interim-fixes /opt/ol/fixes/
 
 # Add an application
-COPY --chown=1001:0  Sample1.war /config/dropins/
+COPY --chown=1001:0  icecap-saas.war /config/dropins/
 
 # This script adds the requested server configuration, applies any interim fixes, and populates caches to optimize the runtime.
 RUN configure.sh
