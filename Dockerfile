@@ -7,8 +7,7 @@ COPY --chown=1001:0  server.xml /config/
 # This option is available only in the 'kernel-slim' image type. The 'full' and 'beta' tags already include all features.
 RUN features.sh
 
-# Add interim fixes (optional)
-COPY --chown=1001:0  interim-fixes /opt/ol/fixes/
+
 
 # Add an application
 COPY --chown=1001:0  icecap-saas.war /config/dropins/
