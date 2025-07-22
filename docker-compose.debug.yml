@@ -9,6 +9,6 @@ services:
     environment:
       NODE_ENV: development
     ports:
-      - 3000:3000
+      - 9080:9080
       - 9229:9229
     
