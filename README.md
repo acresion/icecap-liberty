@@ -104,3 +104,8 @@ The solution uses Gradle to build the application. It includes a Gradle wrapper 
 
 - Find the file called gradle.properties.template
 - Follow the instructions provided on the file
+
+
+### SCREENSHOTS:
+
+![Test Image](Images/space.jpg)
