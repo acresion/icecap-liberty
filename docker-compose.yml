@@ -9,4 +9,4 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 9080:9080
+      - 3000:9080
