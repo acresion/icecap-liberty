@@ -4,7 +4,7 @@ metadata:
  name: icecap-api-service
 spec:
   ports:
-  - port: 3000
+  - port: 9080
     targetPort: 9080
   selector:
     app: icecap-api
