@@ -16,7 +16,7 @@ spec:
         app: icecap-api
     spec:
       containers:
-      - name: nodejs-gui
+      - name: icecap-api
         image: acresion/icecap-api:latest
         resources:
           requests:
