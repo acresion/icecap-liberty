@@ -8,10 +8,11 @@
 		<feature>concurrent-1.0</feature>
 	</featureManager>
 
-	<httpEndpoint httpPort="${http.port}"
+	<httpEndpoint httpPort="9080"
 		httpsPort="${https.port}" id="defaultHttpEndpoint" host="*" />
 
-	 
+	 <webApplication id="icecap-saas"
+		location="icecap-saas.war" contextRoot="${app.context.root}" />
 		
 	
 		
