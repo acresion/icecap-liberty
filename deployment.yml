@@ -27,3 +27,23 @@ spec:
             memory: 1Gi        
         ports:
         - containerPort: 9080
+        env:
+        - name: mysql_dbname
+          value: "icecap"
+        - name: mysql_host
+          value: "localhost"
+        - name: mysql_port
+          value: 3306
+        - name: mysql_user
+          valueFrom:
+            secretKeyRef:
+              name: icecap-api-secret
+              key:  mysql_user
+        - name: mysql_password
+          valueFrom:
+            secretKeyRef:
+              name: icecap-api-secret
+              key:  mysql_passwordd
+         
+         
+          
