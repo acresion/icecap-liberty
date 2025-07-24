@@ -9,10 +9,9 @@
 	</featureManager>
 
 	<httpEndpoint httpPort="9080"
-		httpsPort="${https.port}" id="defaultHttpEndpoint" host="*" />
+		httpsPort="9443" id="defaultHttpEndpoint" host="*" />
 
-	 <webApplication id="icecap-saas"
-		location="icecap-saas.war" contextRoot="${app.context.root}" />
+	 
 		
 	
 		
