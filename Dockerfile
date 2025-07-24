@@ -10,7 +10,7 @@ RUN features.sh
 
 
 # Add an application (supposedly this summons a clone 
-COPY --chown=1001:0  icecap-saas/build/libs/icecap-saas.war /config/dropins/
+
 
 # This script adds the requested server configuration, applies any interim fixes, and populates caches to optimize the runtime.
 RUN configure.sh
