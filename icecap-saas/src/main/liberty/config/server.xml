@@ -11,8 +11,7 @@
 	<httpEndpoint httpPort="${http.port}"
 		httpsPort="${https.port}" id="defaultHttpEndpoint" host="*" />
 
-	 <webApplication id="icecap-saas"
-		location="icecap-saas.war" contextRoot="${app.context.root}" />
+	 
 		
 	
 		
