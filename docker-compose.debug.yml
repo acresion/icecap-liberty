@@ -10,5 +10,5 @@ services:
       NODE_ENV: development
     ports:
       - 9080:9080
-      - 9229:9229
+      
     
