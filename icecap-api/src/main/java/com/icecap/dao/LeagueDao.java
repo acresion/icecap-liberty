@@ -116,10 +116,13 @@ public class LeagueDao {
     List<League> lister = new ArrayList<>();
     try {
       try (PreparedStatement p = con.prepareStatement(SELECT_ALL_LEAGUE_SQL)) {
+        logger.info("Connection success");
         try (ResultSet rs = p.executeQuery()) {
           while (rs.next()) {
             lister.add(createLeague(rs));
           }
+          logger.info("Return League");
+
           return lister;
         }
 
