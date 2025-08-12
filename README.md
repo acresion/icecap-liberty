@@ -105,7 +105,33 @@ The solution uses Gradle to build the application. It includes a Gradle wrapper 
 - Find the file called gradle.properties.template
 - Follow the instructions provided on the file
 
+### DOCKER
+- Push the changes to `GitHub`. The gitaction provided will automatically build a new Docker container
+- Pull the Docker containers using the command `./restartDeployment.sh`
+- Run the Kubernetes pods using the command `kubectl port-forward service/icecap-liberty-service 3000:3000`
+- Note you will need to set up secrets prior to running the script. The command is this:
+	`kubectl delete secret icecap-api-secret --ignore-not-found`
+    `kubectl create secret generic icecap-api-secret --from-literal=mysql_user=<username> --from-literal=mysql_password=<password>`
+- If you want to view the logs of a pod, remember to run the command `kubectl logs <pod_name>`
+
+- curl command you can use to test your application:
+curl -X 'GET' \
+  'http://icecap-api-service.default.svc.cluster.local:9080/icecap/v2/leagues' \
+  -H 'accept: application/json'
+-exec to a pod:
+	`kubectl exec -it <pod_name> -- /bin/sh`
+
+- note: example string to connect to mysql:
+mysql://username:password@mysql-service.namespace.svc.cluster.local:3306/database_name
+
 
 ### SCREENSHOTS:
-
-![Test Image](Images/space.jpg)
+![Image 1](Images/screenshot1.png)
+![Image 2](Images/screenshot2.png)
+![Image 3](Images/screenshot3.png)
+![Image 4](Images/screenshot4.png)
+![Image 5](Images/screenshot5.png)
+![Image 6](Images/screenshot6.png)
+![Image 7](Images/screenshot7.png)
+![Image 8](Images/screenshot8.png)
+![Image 9](Images/screenshot9.png)

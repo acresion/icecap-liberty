@@ -29,7 +29,7 @@ public class ConnectionToSQL {
 
     try {
       logger.info("Before succ");
-      Class.forName("com.mysql.jdbc.Driver");
+      Class.forName("com.mysql.cj.jdbc.Driver");
       logger.info("After succ: " + config);
       // This doesn't
       Connection connection = DriverManager.getConnection(

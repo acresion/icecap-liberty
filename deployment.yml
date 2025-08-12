@@ -33,7 +33,7 @@ spec:
         - name: mysql_host
           value: "localhost"
         - name: mysql_port
-          value: 3306
+          value: "3306"
         - name: mysql_user
           valueFrom:
             secretKeyRef:
@@ -43,7 +43,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: icecap-api-secret
-              key:  mysql_passwordd
+              key:  mysql_password
          
          
           
