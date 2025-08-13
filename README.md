@@ -124,6 +124,9 @@ curl -X 'GET' \
 - note: example string to connect to mysql:
 mysql://username:password@mysql-service.namespace.svc.cluster.local:3306/database_name
 
+- unix command (personal stuff)
+ip route show | grep "default"
+
 
 ### SCREENSHOTS:
 ![Image 1](Images/screenshot1.png)

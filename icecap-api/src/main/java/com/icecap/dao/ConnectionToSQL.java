@@ -31,7 +31,7 @@ public class ConnectionToSQL {
       logger.info("Before succ");
       Class.forName("com.mysql.cj.jdbc.Driver");
       logger.info("After succ: " + config);
-      // This doesn't
+      // This doesn't seem to work
       Connection connection = DriverManager.getConnection(
           "jdbc:mysql://" + config.getHost() + ":" + config.getPort() + "/" + config.getDbName(), config.getUser(),
           config.getPassword());
@@ -42,6 +42,7 @@ public class ConnectionToSQL {
 
     } catch (ClassNotFoundException e) {
       // the driver is shipped with the application
+      logger.info("something in the way");
       throw new IllegalStateException(e);
     }
     // This is the source of all of the errors.
