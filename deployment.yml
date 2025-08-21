@@ -31,7 +31,7 @@ spec:
         - name: mysql_dbname
           value: "icecap"
         - name: mysql_host
-          value: "localhost"
+          value: "mysql-service.default.svc.cluster.local"
         - name: mysql_port
           value: "3306"
         - name: mysql_user
