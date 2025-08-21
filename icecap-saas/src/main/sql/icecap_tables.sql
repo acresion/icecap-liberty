@@ -1,10 +1,11 @@
 use icecap;
-drop table if exists athlete;
-drop table if exists team;
+
 drop table if exists contract_info;
-drop table if exists league;
 drop table if exists skater_stats;
 drop table if exists goalie_stats;
+drop table if exists athlete;
+drop table if exists team;
+drop table if exists league;
 -- defines the table for a league
 
 -- change date of birth to date data type
@@ -43,14 +44,13 @@ create table team(
 
 -- defines general info about an athlete in a specific league
 create table athlete(
-   athlete_id varchar(255)
+   athlete_id char(36)
  , current_team_id char(36)
- , status varchar(10)
  , firstName varchar(255)
  , lastName varchar(20)
  , jNumber int
  , age int
- , position varchar(20)
+ , pos varchar(20)
  , heightFeet int
  , heightInches int
  , weightPounds int
@@ -72,7 +72,7 @@ create table contract_info(
 , term int
 , value decimal(12,2)
 , capHit decimal(12,2)
-, percent_at_start decimal
+, percent_at_start decimal(12,2)
 , status varchar(255)
 , foreign key(player_id) references athlete(athlete_id)
 , foreign key(team) references team(team_id));

@@ -100,7 +100,7 @@ The solution uses Gradle to build the application. It includes a Gradle wrapper 
 - If the Liberty server is currently running, stop it using `Control + C`
 - Start it using `./server debug [server_name]`
 
-###GRADLE.PROPERTIES:
+### GRADLE.PROPERTIES:
 
 - Find the file called gradle.properties.template
 - Follow the instructions provided on the file
@@ -121,11 +121,9 @@ curl -X 'GET' \
 -exec to a pod:
 	`kubectl exec -it <pod_name> -- /bin/sh`
 
-- note: example string to connect to mysql:
-mysql://username:password@mysql-service.namespace.svc.cluster.local:3306/database_name
 
-- unix command (personal stuff)
-ip route show | grep "default"
+
+
 
 
 ### SCREENSHOTS:

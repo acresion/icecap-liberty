@@ -1,0 +1,1013 @@
+{
+  "id": "42a966db-0f24-11e2-8525-18a905767e44",
+  "status": "NWT",
+  "full_name": "David Jones",
+  "first_name": "David",
+  "last_name": "Jones",
+  "abbr_name": "D.Jones",
+  "height": 74,
+  "weight": 210,
+  "handedness": "R",
+  "position": "F",
+  "primary_position": "RW",
+  "college": "Dartmouth",
+  "experience": "9",
+  "birth_place": "Guelph, ON, CAN",
+  "birthdate": "1984-08-10",
+  "updated": "2023-02-06T14:57:14Z",
+  "reference": "8470877",
+  "rookie_year": 2007,
+  "league": {
+    "id": "fd560107-a85b-4388-ab0d-655ad022aff7",
+    "name": "NHL",
+    "alias": "NHL"
+  },
+  "draft": {
+    "team_id": "4415ce44-0f24-11e2-8525-18a905767e44",
+    "year": 2003,
+    "round": "9",
+    "pick": "288"
+  },
+  "seasons": [
+    {
+      "id": "a64701af-85bb-4cc0-bf72-15f6ba69757e",
+      "year": 2013,
+      "type": "REG",
+      "teams": [
+        {
+          "id": "44159241-0f24-11e2-8525-18a905767e44",
+          "name": "Flames",
+          "market": "Calgary",
+          "alias": "CGY",
+          "sr_id": "sr:team:3679",
+          "reference": "20",
+          "statistics": {
+            "total": {
+              "games_played": 48,
+              "goals": 9,
+              "assists": 8,
+              "penalties": 5,
+              "penalty_minutes": 10,
+              "shots": 104,
+              "blocked_att": 30,
+              "missed_shots": 34,
+              "hits": 102,
+              "giveaways": 13,
+              "takeaways": 15,
+              "blocked_shots": 31,
+              "faceoffs_won": 38,
+              "faceoffs_lost": 35,
+              "winning_goals": 1,
+              "plus_minus": 1,
+              "games_scratched": 34,
+              "games_started": 0,
+              "shooting_pct": 8.7,
+              "faceoff_win_pct": 52.1,
+              "faceoffs": 73,
+              "points": 17,
+              "emptynet_goals": 0,
+              "overtime_goals": 0,
+              "overtime_assists": 0,
+              "overtime_shots": 0,
+              "penalties_major": 0,
+              "penalties_match": 0,
+              "penalties_minor": 0,
+              "penalties_misconduct": 0
+            },
+            "powerplay": {
+              "shots": 11,
+              "goals": 2,
+              "missed_shots": 4,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 93,
+              "goals": 7,
+              "missed_shots": 30,
+              "assists": 8,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0.17,
+              "blocked_shots": 0.65,
+              "points": 0.35,
+              "blocked_att": 0.63,
+              "penalties": 0.1,
+              "missed_shots": 0.71,
+              "hits": 2.13,
+              "shots": 2.17,
+              "takeaways": 0.31,
+              "giveaways": 0.27,
+              "goals": 0.19,
+              "penalty_minutes": 0.21
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 1080,
+              "total": "742:04",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "742:04"
+            },
+            "average": {
+              "shifts": 22.5,
+              "total": "15:28",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "15:28"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "f2c323fe-5187-4357-a2b6-4b7871c4136a",
+      "year": 2014,
+      "type": "PRE",
+      "teams": [
+        {
+          "id": "44159241-0f24-11e2-8525-18a905767e44",
+          "name": "Flames",
+          "market": "Calgary",
+          "alias": "CGY",
+          "sr_id": "sr:team:3679",
+          "reference": "20",
+          "statistics": {
+            "total": {
+              "games_played": 0,
+              "goals": 0,
+              "assists": 0,
+              "penalties": 0,
+              "penalty_minutes": 0,
+              "shots": 0,
+              "blocked_att": 0,
+              "missed_shots": 0,
+              "hits": 0,
+              "giveaways": 0,
+              "takeaways": 0,
+              "blocked_shots": 0,
+              "faceoffs_won": 0,
+              "faceoffs_lost": 0,
+              "winning_goals": 0,
+              "plus_minus": 0,
+              "games_scratched": 1,
+              "shooting_pct": 0,
+              "faceoff_win_pct": 0,
+              "faceoffs": 0,
+              "points": 0,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0,
+              "blocked_shots": 0,
+              "points": 0,
+              "blocked_att": 0,
+              "penalties": 0,
+              "missed_shots": 0,
+              "hits": 0,
+              "shots": 0,
+              "takeaways": 0,
+              "giveaways": 0,
+              "goals": 0,
+              "penalty_minutes": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "e075e3cd-94d6-46e0-997e-abcc8d3a8897",
+      "year": 2014,
+      "type": "PST",
+      "teams": [
+        {
+          "id": "44159241-0f24-11e2-8525-18a905767e44",
+          "name": "Flames",
+          "market": "Calgary",
+          "alias": "CGY",
+          "sr_id": "sr:team:3679",
+          "reference": "20",
+          "statistics": {
+            "total": {
+              "games_played": 11,
+              "goals": 2,
+              "assists": 3,
+              "penalties": 1,
+              "penalty_minutes": 2,
+              "shots": 22,
+              "blocked_att": 5,
+              "missed_shots": 2,
+              "hits": 36,
+              "giveaways": 4,
+              "takeaways": 9,
+              "blocked_shots": 6,
+              "faceoffs_won": 4,
+              "faceoffs_lost": 8,
+              "winning_goals": 0,
+              "plus_minus": 1,
+              "games_scratched": 0,
+              "shooting_pct": 9.1,
+              "faceoff_win_pct": 33.3,
+              "faceoffs": 12,
+              "points": 5,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 1,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 21,
+              "goals": 2,
+              "missed_shots": 2,
+              "assists": 3,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0.27,
+              "blocked_shots": 0.55,
+              "points": 0.45,
+              "blocked_att": 0.45,
+              "penalties": 0.09,
+              "missed_shots": 0.18,
+              "hits": 3.27,
+              "shots": 2,
+              "takeaways": 0.82,
+              "giveaways": 0.36,
+              "goals": 0.18,
+              "penalty_minutes": 0.18
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 248,
+              "total": "154:12",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "154:12"
+            },
+            "average": {
+              "shifts": 22.55,
+              "total": "14:01",
+              "evenstrength": "14:01"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "0670af84-09f7-4149-8d28-7f15396a61f1",
+      "year": 2014,
+      "type": "REG",
+      "teams": [
+        {
+          "id": "44159241-0f24-11e2-8525-18a905767e44",
+          "name": "Flames",
+          "market": "Calgary",
+          "alias": "CGY",
+          "sr_id": "sr:team:3679",
+          "reference": "20",
+          "statistics": {
+            "total": {
+              "games_played": 67,
+              "goals": 14,
+              "assists": 16,
+              "penalties": 8,
+              "penalty_minutes": 18,
+              "shots": 114,
+              "blocked_att": 45,
+              "missed_shots": 47,
+              "hits": 125,
+              "giveaways": 26,
+              "takeaways": 24,
+              "blocked_shots": 45,
+              "faceoffs_won": 15,
+              "faceoffs_lost": 16,
+              "winning_goals": 1,
+              "plus_minus": -3,
+              "games_scratched": 7,
+              "shooting_pct": 12.3,
+              "faceoff_win_pct": 48.4,
+              "faceoffs": 31,
+              "points": 30,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 7,
+              "goals": 2,
+              "missed_shots": 3,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 107,
+              "goals": 12,
+              "missed_shots": 44,
+              "assists": 16,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0.24,
+              "blocked_shots": 0.67,
+              "points": 0.45,
+              "blocked_att": 0.67,
+              "penalties": 0.12,
+              "missed_shots": 0.7,
+              "hits": 1.87,
+              "shots": 1.7,
+              "takeaways": 0.36,
+              "giveaways": 0.39,
+              "goals": 0.21,
+              "penalty_minutes": 0.27
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 1458,
+              "total": "960:44",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "960:44"
+            },
+            "average": {
+              "shifts": 21.76,
+              "total": "14:20",
+              "evenstrength": "14:20"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba67d6af-e104-4e0a-9564-2cd7f094e4fe",
+      "year": 2015,
+      "type": "PRE",
+      "teams": [
+        {
+          "id": "44159241-0f24-11e2-8525-18a905767e44",
+          "name": "Flames",
+          "market": "Calgary",
+          "alias": "CGY",
+          "sr_id": "sr:team:3679",
+          "reference": "20",
+          "statistics": {
+            "total": {
+              "games_played": 1,
+              "goals": 0,
+              "assists": 0,
+              "penalties": 0,
+              "penalty_minutes": 0,
+              "shots": 2,
+              "blocked_att": 1,
+              "missed_shots": 0,
+              "hits": 0,
+              "giveaways": 0,
+              "takeaways": 0,
+              "blocked_shots": 0,
+              "faceoffs_won": 0,
+              "faceoffs_lost": 0,
+              "winning_goals": 0,
+              "plus_minus": 1,
+              "games_scratched": 0,
+              "shooting_pct": 0,
+              "faceoff_win_pct": 0,
+              "faceoffs": 0,
+              "points": 0,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 1,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 1,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0,
+              "blocked_shots": 0,
+              "points": 0,
+              "blocked_att": 1,
+              "penalties": 0,
+              "missed_shots": 0,
+              "hits": 0,
+              "shots": 2,
+              "takeaways": 0,
+              "giveaways": 0,
+              "goals": 0,
+              "penalty_minutes": 0
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 21,
+              "total": "14:13",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "14:13"
+            },
+            "average": {
+              "shifts": 21,
+              "total": "14:13",
+              "evenstrength": "14:13"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "350e419b-ffd6-49e3-957a-13626d94391f",
+      "year": 2015,
+      "type": "PST",
+      "teams": [
+        {
+          "id": "4416091c-0f24-11e2-8525-18a905767e44",
+          "name": "Wild",
+          "market": "Minnesota",
+          "alias": "MIN",
+          "sr_id": "sr:team:3689",
+          "reference": "30",
+          "statistics": {
+            "total": {
+              "games_played": 6,
+              "goals": 0,
+              "assists": 1,
+              "penalties": 0,
+              "penalty_minutes": 0,
+              "shots": 3,
+              "blocked_att": 4,
+              "missed_shots": 4,
+              "hits": 10,
+              "giveaways": 3,
+              "takeaways": 1,
+              "blocked_shots": 1,
+              "faceoffs_won": 0,
+              "faceoffs_lost": 0,
+              "winning_goals": 0,
+              "plus_minus": 0,
+              "games_scratched": 0,
+              "shooting_pct": 0,
+              "faceoff_win_pct": 0,
+              "faceoffs": 0,
+              "points": 1,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 3,
+              "goals": 0,
+              "missed_shots": 4,
+              "assists": 1,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0.17,
+              "blocked_shots": 0.17,
+              "points": 0.17,
+              "blocked_att": 0.67,
+              "penalties": 0,
+              "missed_shots": 0.67,
+              "hits": 1.67,
+              "shots": 0.5,
+              "takeaways": 0.17,
+              "giveaways": 0.5,
+              "goals": 0,
+              "penalty_minutes": 0
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 111,
+              "total": "77:23",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "77:23"
+            },
+            "average": {
+              "shifts": 18.5,
+              "total": "12:54",
+              "evenstrength": "12:54"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "9618b7b0-2a86-486d-b256-88748191f854",
+      "year": 2015,
+      "type": "REG",
+      "teams": [
+        {
+          "id": "4416091c-0f24-11e2-8525-18a905767e44",
+          "name": "Wild",
+          "market": "Minnesota",
+          "alias": "MIN",
+          "sr_id": "sr:team:3689",
+          "reference": "30",
+          "statistics": {
+            "total": {
+              "games_played": 16,
+              "goals": 2,
+              "assists": 1,
+              "penalties": 0,
+              "penalty_minutes": 0,
+              "shots": 19,
+              "blocked_att": 3,
+              "missed_shots": 8,
+              "hits": 32,
+              "giveaways": 2,
+              "takeaways": 4,
+              "blocked_shots": 5,
+              "faceoffs_won": 1,
+              "faceoffs_lost": 1,
+              "winning_goals": 0,
+              "plus_minus": 1,
+              "games_scratched": 3,
+              "shooting_pct": 10.5,
+              "faceoff_win_pct": 50,
+              "faceoffs": 2,
+              "points": 3,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 19,
+              "goals": 2,
+              "missed_shots": 8,
+              "assists": 1,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0.06,
+              "blocked_shots": 0.31,
+              "points": 0.19,
+              "blocked_att": 0.19,
+              "penalties": 0,
+              "missed_shots": 0.5,
+              "hits": 2,
+              "shots": 1.19,
+              "takeaways": 0.25,
+              "giveaways": 0.13,
+              "goals": 0.13,
+              "penalty_minutes": 0
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 263,
+              "total": "178:19",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "178:19"
+            },
+            "average": {
+              "shifts": 16.44,
+              "total": "11:09",
+              "evenstrength": "11:09"
+            }
+          }
+        },
+        {
+          "id": "44159241-0f24-11e2-8525-18a905767e44",
+          "name": "Flames",
+          "market": "Calgary",
+          "alias": "CGY",
+          "sr_id": "sr:team:3679",
+          "reference": "20",
+          "statistics": {
+            "total": {
+              "games_played": 59,
+              "goals": 9,
+              "assists": 6,
+              "penalties": 5,
+              "penalty_minutes": 10,
+              "shots": 67,
+              "blocked_att": 24,
+              "missed_shots": 40,
+              "hits": 115,
+              "giveaways": 7,
+              "takeaways": 10,
+              "blocked_shots": 28,
+              "faceoffs_won": 16,
+              "faceoffs_lost": 16,
+              "winning_goals": 2,
+              "plus_minus": -8,
+              "games_scratched": 2,
+              "shooting_pct": 13.4,
+              "faceoff_win_pct": 50,
+              "faceoffs": 32,
+              "points": 15,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 2,
+              "goals": 1,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 65,
+              "goals": 8,
+              "missed_shots": 40,
+              "assists": 6,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 1
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0.1,
+              "blocked_shots": 0.47,
+              "points": 0.25,
+              "blocked_att": 0.41,
+              "penalties": 0.08,
+              "missed_shots": 0.68,
+              "hits": 1.95,
+              "shots": 1.14,
+              "takeaways": 0.17,
+              "giveaways": 0.12,
+              "goals": 0.15,
+              "penalty_minutes": 0.17
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 1162,
+              "total": "754:37",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "754:37"
+            },
+            "average": {
+              "shifts": 19.69,
+              "total": "12:47",
+              "evenstrength": "12:47"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "a06e4baf-c43d-40d7-982f-8e54c4f9c382",
+      "year": 2016,
+      "type": "PRE",
+      "teams": [
+        {
+          "id": "441862de-0f24-11e2-8525-18a905767e44",
+          "name": "Ducks",
+          "market": "Anaheim",
+          "alias": "ANA",
+          "sr_id": "sr:team:3675",
+          "reference": "24",
+          "statistics": {
+            "total": {
+              "games_played": 2,
+              "goals": 0,
+              "assists": 0,
+              "penalties": 0,
+              "penalty_minutes": 0,
+              "shots": 4,
+              "blocked_att": 3,
+              "missed_shots": 1,
+              "hits": 5,
+              "giveaways": 0,
+              "takeaways": 1,
+              "blocked_shots": 2,
+              "faceoffs_won": 1,
+              "faceoffs_lost": 0,
+              "winning_goals": 0,
+              "plus_minus": -1,
+              "games_scratched": 5,
+              "games_started": 1,
+              "shooting_pct": 0,
+              "faceoff_win_pct": 100,
+              "faceoffs": 1,
+              "points": 0,
+              "overtime_goals": 0
+            },
+            "powerplay": {
+              "shots": 2,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "shorthanded": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0,
+              "assists": 0,
+              "faceoffs_won": 0,
+              "faceoffs": 0,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 0
+            },
+            "evenstrength": {
+              "shots": 2,
+              "goals": 0,
+              "missed_shots": 1,
+              "assists": 0,
+              "faceoffs_won": 1,
+              "faceoffs": 1,
+              "faceoffs_lost": 0,
+              "faceoff_win_pct": 100
+            },
+            "penalty": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "shootout": {
+              "shots": 0,
+              "goals": 0,
+              "missed_shots": 0
+            },
+            "average": {
+              "assists": 0,
+              "blocked_shots": 1,
+              "points": 0,
+              "blocked_att": 1.5,
+              "penalties": 0,
+              "missed_shots": 0.5,
+              "hits": 2.5,
+              "shots": 2,
+              "takeaways": 0.5,
+              "giveaways": 0,
+              "goals": 0,
+              "penalty_minutes": 0
+            }
+          },
+          "time_on_ice": {
+            "total": {
+              "shifts": 41,
+              "total": "32:20",
+              "overtime": "00:00",
+              "powerplay": "00:00",
+              "shorthanded": "00:00",
+              "evenstrength": "32:20"
+            },
+            "average": {
+              "shifts": 20.5,
+              "total": "16:10",
+              "evenstrength": "16:10"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

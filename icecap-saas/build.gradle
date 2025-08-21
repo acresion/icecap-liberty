@@ -103,7 +103,7 @@ liberty {
     server {
         env = [    
               'mysql_dbname' : 'icecap' ,
-              'mysql_host'   : 'mysql.default.svc.cluster.local',  
+              'mysql_host'   : 'localhost',  
               'mysql_port'   : '3306',
               'WLP_LOGGING_CONSOLE_LOGLEVEL' :    'info',
               'WLP_LOGGING_MESSAGE_SOURCE'  :   'message,trace,accessLog,ffdc,audit',
