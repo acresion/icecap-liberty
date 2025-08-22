@@ -134,7 +134,9 @@ curl -X 'GET' \
 ![Image 4](Images/screenshot4.png)
 ![Image 5](Images/screenshot5.png)
 ![Image 6](Images/screenshot6.png)
-- Swagger UI page allowing users to test the API
+- Swagger UI page for API testing
 ![Image 7](Images/screenshot7.png)
 ![Image 8](Images/screenshot8.png)
 ![Image 9](Images/screenshot9.png)
+- DockerHub page containing every Docker image in the current namespace
+![Image 10](Images/screenshot10.png)
