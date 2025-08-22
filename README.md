@@ -127,12 +127,14 @@ curl -X 'GET' \
 
 
 ### SCREENSHOTS:
+- Command line output after running ./gradlew libertyDev
 ![Image 1](Images/screenshot1.png)
 ![Image 2](Images/screenshot2.png)
 ![Image 3](Images/screenshot3.png)
 ![Image 4](Images/screenshot4.png)
 ![Image 5](Images/screenshot5.png)
 ![Image 6](Images/screenshot6.png)
+- Swagger UI page allowing users to test the API
 ![Image 7](Images/screenshot7.png)
 ![Image 8](Images/screenshot8.png)
 ![Image 9](Images/screenshot9.png)
