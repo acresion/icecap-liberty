@@ -140,3 +140,6 @@ curl -X 'GET' \
 ![Image 9](Images/screenshot9.png)
 - DockerHub page containing every Docker image in the current namespace
 ![Image 10](Images/screenshot10.png)
+- GitHub actions that are responsible for running the unit tests, building the container, and pushing to DockerHub
+![Image 11](Images/screenshot11.png)
+![Image 12](Images/screenshot12.png)
